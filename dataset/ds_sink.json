@@ -1,0 +1,22 @@
+{
+	"name": "ds_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_data_lake",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"url": "https://elxa2peopletechdev01.dfs.core.windows.net/"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,83 @@
+{
+	"name": "ds_abs",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_data_lake",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"url": "https://elxa2peopletechdev01.dfs.core.windows.net/"
+			}
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "ABS 2023 User_audit_report.xls",
+				"folderPath": "abs",
+				"fileSystem": "raw"
+			},
+			"sheetIndex": 0,
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "User First Name",
+				"type": "String"
+			},
+			{
+				"name": "User Last Name",
+				"type": "String"
+			},
+			{
+				"name": "User ID",
+				"type": "String"
+			},
+			{
+				"name": "Local system ID",
+				"type": "String"
+			},
+			{
+				"name": "Type",
+				"type": "String"
+			},
+			{
+				"name": "Status",
+				"type": "String"
+			},
+			{
+				"name": "Date changed",
+				"type": "String"
+			},
+			{
+				"name": "Date effective",
+				"type": "String"
+			},
+			{
+				"name": "Field modified",
+				"type": "String"
+			},
+			{
+				"name": "Field type",
+				"type": "String"
+			},
+			{
+				"name": "Field changed from",
+				"type": "String"
+			},
+			{
+				"name": "Field changed to",
+				"type": "String"
+			},
+			{
+				"name": "Field changed by",
+				"type": "String"
+			},
+			{
+				"name": "Reason for change",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

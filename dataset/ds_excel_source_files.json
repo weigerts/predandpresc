@@ -1,0 +1,53 @@
+{
+	"name": "ds_excel_source_files",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_data_lake",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"url": "https://elxa2peopletechdev01.dfs.core.windows.net/"
+			}
+		},
+		"parameters": {
+			"folder": {
+				"type": "string"
+			},
+			"file_name": {
+				"type": "string"
+			},
+			"sheet_name": {
+				"type": "string"
+			},
+			"range": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": {
+				"value": "@dataset().sheet_name",
+				"type": "Expression"
+			},
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().folder",
+					"type": "Expression"
+				},
+				"fileSystem": "input"
+			},
+			"range": {
+				"value": "@dataset().range",
+				"type": "Expression"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "ls_key_vault",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"kv_url": {
+				"type": "string",
+				"defaultValue": "https://elx-a2-ppltech-kv-dev.vault.azure.net/"
+			}
+		},
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "@{linkedService().kv_url}"
+		}
+	}
+}

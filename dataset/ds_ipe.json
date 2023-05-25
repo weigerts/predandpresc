@@ -1,0 +1,311 @@
+{
+	"name": "ds_ipe",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_data_lake",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"url": "https://elxa2peopletechdev01.dfs.core.windows.net/"
+			}
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "IPE_SubBand 2023 User_audit_report_-_Detailed_07_02_15.xls",
+				"folderPath": "ipe",
+				"fileSystem": "raw"
+			},
+			"sheetIndex": 0,
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "ID",
+				"type": "String"
+			},
+			{
+				"name": "Respondents",
+				"type": "String"
+			},
+			{
+				"name": "ResponseRate",
+				"type": "String"
+			},
+			{
+				"name": "Culture",
+				"type": "String"
+			},
+			{
+				"name": "Culture  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Trust - Team",
+				"type": "String"
+			},
+			{
+				"name": "Trust - Team  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Role Clarity Functional",
+				"type": "String"
+			},
+			{
+				"name": "Role Clarity Functional  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Growth Functional",
+				"type": "String"
+			},
+			{
+				"name": "Growth Functional  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Career",
+				"type": "String"
+			},
+			{
+				"name": "Career  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Continuous Improvement Functional",
+				"type": "String"
+			},
+			{
+				"name": "Continuous Improvement Functional  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Communication - Manager",
+				"type": "String"
+			},
+			{
+				"name": "Communication - Manager  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Support",
+				"type": "String"
+			},
+			{
+				"name": "Support  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Equal Opportunity",
+				"type": "String"
+			},
+			{
+				"name": "Equal Opportunity  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Distress - Well-being",
+				"type": "String"
+			},
+			{
+				"name": "Distress - Well-being  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Ethics Helpline",
+				"type": "String"
+			},
+			{
+				"name": "Ethics Helpline  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Work Life Balance",
+				"type": "String"
+			},
+			{
+				"name": "Work Life Balance  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Growth",
+				"type": "String"
+			},
+			{
+				"name": "Growth  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Cooperation",
+				"type": "String"
+			},
+			{
+				"name": "Cooperation  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Initiative",
+				"type": "String"
+			},
+			{
+				"name": "Initiative  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Decision Making",
+				"type": "String"
+			},
+			{
+				"name": "Decision Making  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Engagement Index",
+				"type": "String"
+			},
+			{
+				"name": "Engagement Index  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Engagement Index > Recommend",
+				"type": "String"
+			},
+			{
+				"name": "Engagement Index > Recommend  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Role Clarity",
+				"type": "String"
+			},
+			{
+				"name": "Role Clarity  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Resources",
+				"type": "String"
+			},
+			{
+				"name": "Resources  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Engagement Index > eSat",
+				"type": "String"
+			},
+			{
+				"name": "Engagement Index > eSat  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Belonging",
+				"type": "String"
+			},
+			{
+				"name": "Belonging  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Prospects",
+				"type": "String"
+			},
+			{
+				"name": "Prospects  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Purpose Contribution",
+				"type": "String"
+			},
+			{
+				"name": "Purpose Contribution  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Inclusion - Team",
+				"type": "String"
+			},
+			{
+				"name": "Inclusion - Team  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Job Feedback",
+				"type": "String"
+			},
+			{
+				"name": "Job Feedback  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Consumer Focus - Culture",
+				"type": "String"
+			},
+			{
+				"name": "Consumer Focus - Culture  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Non-Discrimination",
+				"type": "String"
+			},
+			{
+				"name": "Non-Discrimination  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Code of Conduct",
+				"type": "String"
+			},
+			{
+				"name": "Code of Conduct  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Health & Safety",
+				"type": "String"
+			},
+			{
+				"name": "Health & Safety  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Continuous Improvement",
+				"type": "String"
+			},
+			{
+				"name": "Continuous Improvement  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Empowerment",
+				"type": "String"
+			},
+			{
+				"name": "Empowerment  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Environment",
+				"type": "String"
+			},
+			{
+				"name": "Environment  %Favorable",
+				"type": "String"
+			},
+			{
+				"name": "Purpose",
+				"type": "String"
+			},
+			{
+				"name": "Purpose  %Favorable",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

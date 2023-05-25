@@ -1,0 +1,9 @@
+{
+	"name": "elx-a2-Peopletech-datafactory-dev",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "73070f6d-3f43-42da-bdd9-2032da45ec89",
+		"tenantId": "d2007bef-127d-4591-97ac-10d72fe28031"
+	}
+}

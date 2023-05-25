@@ -1,0 +1,18 @@
+{
+	"name": "ds_azure_table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"db_server_name": "elx-a2-hrhub-sql-dev.database.windows.net",
+				"db_name": "elx-a2-hrhub-sqldb-dev",
+				"db_user": "dhradmin"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
