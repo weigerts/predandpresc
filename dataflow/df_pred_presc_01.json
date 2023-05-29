@@ -10,6 +10,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "sourceExcelevs"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_abs",
+						"type": "DatasetReference"
+					},
+					"name": "sourceexcelabs"
 				}
 			],
 			"sinks": [
@@ -99,6 +106,25 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> sourceExcelevs",
+				"source(output(",
+				"          {User First Name} as string,",
+				"          {User Last Name} as string,",
+				"          {User ID} as string,",
+				"          {Local system ID} as string,",
+				"          Type as string,",
+				"          Status as string,",
+				"          {Date changed} as string,",
+				"          {Date effective} as string,",
+				"          {Field modified} as string,",
+				"          {Field type} as string,",
+				"          {Field changed from} as string,",
+				"          {Field changed to} as string,",
+				"          {Field changed by} as string,",
+				"          {Reason for change} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> sourceexcelabs",
 				"sourceExcelevs sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
