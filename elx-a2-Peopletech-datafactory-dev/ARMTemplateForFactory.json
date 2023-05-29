@@ -1,0 +1,1673 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "elx-a2-Peopletech-datafactory-dev"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=@{linkedService().db_server_name};Initial Catalog=@{linkedService().db_name};User ID=@{linkedService().db_user}"
+		},
+		"ls_data_lake_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "@{linkedService().url}"
+		},
+		"ls_key_vault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "@{linkedService().kv_url}"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/ppl_users_cc')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "df_users_cc",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "df_users_cc",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"vwuserscc": {},
+									"vwuserhierarchy": {},
+									"vwdivisionhierarchy": {},
+									"sinktocsv": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2023-05-23T18:53:49Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/df_users_cc')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_abs')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_data_lake",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"url": "https://elxa2peopletechdev01.dfs.core.windows.net/"
+					}
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "ABS 2023 User_audit_report.xls",
+						"folderPath": "abs",
+						"fileSystem": "raw"
+					},
+					"sheetIndex": 0,
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "User First Name",
+						"type": "String"
+					},
+					{
+						"name": "User Last Name",
+						"type": "String"
+					},
+					{
+						"name": "User ID",
+						"type": "String"
+					},
+					{
+						"name": "Local system ID",
+						"type": "String"
+					},
+					{
+						"name": "Type",
+						"type": "String"
+					},
+					{
+						"name": "Status",
+						"type": "String"
+					},
+					{
+						"name": "Date changed",
+						"type": "String"
+					},
+					{
+						"name": "Date effective",
+						"type": "String"
+					},
+					{
+						"name": "Field modified",
+						"type": "String"
+					},
+					{
+						"name": "Field type",
+						"type": "String"
+					},
+					{
+						"name": "Field changed from",
+						"type": "String"
+					},
+					{
+						"name": "Field changed to",
+						"type": "String"
+					},
+					{
+						"name": "Field changed by",
+						"type": "String"
+					},
+					{
+						"name": "Reason for change",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_data_lake')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_azure_table')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"db_server_name": "elx-a2-hrhub-sql-dev.database.windows.net",
+						"db_name": "elx-a2-hrhub-sqldb-dev",
+						"db_user": "dhradmin"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_csv_file')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_data_lake",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"url": "https://elxa2peopletechdev01.dfs.core.windows.net/"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "cost_center.csv",
+						"fileSystem": "costcenter"
+					},
+					"columnDelimiter": ";",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_data_lake')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_evs')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_data_lake",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"url": "https://elxa2peopletechdev01.dfs.core.windows.net/"
+					}
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "EVS.xlsx",
+						"folderPath": "evs",
+						"fileSystem": "raw"
+					},
+					"sheetIndex": 0,
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "ID",
+						"type": "String"
+					},
+					{
+						"name": "Respondents",
+						"type": "String"
+					},
+					{
+						"name": "ResponseRate",
+						"type": "String"
+					},
+					{
+						"name": "Culture",
+						"type": "String"
+					},
+					{
+						"name": "Culture  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Trust - Team",
+						"type": "String"
+					},
+					{
+						"name": "Trust - Team  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Role Clarity Functional",
+						"type": "String"
+					},
+					{
+						"name": "Role Clarity Functional  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Growth Functional",
+						"type": "String"
+					},
+					{
+						"name": "Growth Functional  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Career",
+						"type": "String"
+					},
+					{
+						"name": "Career  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Continuous Improvement Functional",
+						"type": "String"
+					},
+					{
+						"name": "Continuous Improvement Functional  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Communication - Manager",
+						"type": "String"
+					},
+					{
+						"name": "Communication - Manager  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Support",
+						"type": "String"
+					},
+					{
+						"name": "Support  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Equal Opportunity",
+						"type": "String"
+					},
+					{
+						"name": "Equal Opportunity  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Distress - Well-being",
+						"type": "String"
+					},
+					{
+						"name": "Distress - Well-being  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Ethics Helpline",
+						"type": "String"
+					},
+					{
+						"name": "Ethics Helpline  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Work Life Balance",
+						"type": "String"
+					},
+					{
+						"name": "Work Life Balance  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Growth",
+						"type": "String"
+					},
+					{
+						"name": "Growth  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Cooperation",
+						"type": "String"
+					},
+					{
+						"name": "Cooperation  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Initiative",
+						"type": "String"
+					},
+					{
+						"name": "Initiative  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Decision Making",
+						"type": "String"
+					},
+					{
+						"name": "Decision Making  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index > Recommend",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index > Recommend  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Role Clarity",
+						"type": "String"
+					},
+					{
+						"name": "Role Clarity  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Resources",
+						"type": "String"
+					},
+					{
+						"name": "Resources  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index > eSat",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index > eSat  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Belonging",
+						"type": "String"
+					},
+					{
+						"name": "Belonging  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Prospects",
+						"type": "String"
+					},
+					{
+						"name": "Prospects  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Purpose Contribution",
+						"type": "String"
+					},
+					{
+						"name": "Purpose Contribution  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Inclusion - Team",
+						"type": "String"
+					},
+					{
+						"name": "Inclusion - Team  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Job Feedback",
+						"type": "String"
+					},
+					{
+						"name": "Job Feedback  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Consumer Focus - Culture",
+						"type": "String"
+					},
+					{
+						"name": "Consumer Focus - Culture  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Non-Discrimination",
+						"type": "String"
+					},
+					{
+						"name": "Non-Discrimination  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Code of Conduct",
+						"type": "String"
+					},
+					{
+						"name": "Code of Conduct  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Health & Safety",
+						"type": "String"
+					},
+					{
+						"name": "Health & Safety  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Continuous Improvement",
+						"type": "String"
+					},
+					{
+						"name": "Continuous Improvement  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Empowerment",
+						"type": "String"
+					},
+					{
+						"name": "Empowerment  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Environment",
+						"type": "String"
+					},
+					{
+						"name": "Environment  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Purpose",
+						"type": "String"
+					},
+					{
+						"name": "Purpose  %Favorable",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_data_lake')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_excel_source_files')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_data_lake",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"url": "https://elxa2peopletechdev01.dfs.core.windows.net/"
+					}
+				},
+				"parameters": {
+					"folder": {
+						"type": "string"
+					},
+					"file_name": {
+						"type": "string"
+					},
+					"sheet_name": {
+						"type": "string"
+					},
+					"range": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": {
+						"value": "@dataset().sheet_name",
+						"type": "Expression"
+					},
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().file_name",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().folder",
+							"type": "Expression"
+						},
+						"fileSystem": "input"
+					},
+					"range": {
+						"value": "@dataset().range",
+						"type": "Expression"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_data_lake')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_ipe')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_data_lake",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"url": "https://elxa2peopletechdev01.dfs.core.windows.net/"
+					}
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "IPE_SubBand 2023 User_audit_report_-_Detailed_07_02_15.xls",
+						"folderPath": "ipe",
+						"fileSystem": "raw"
+					},
+					"sheetIndex": 0,
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "ID",
+						"type": "String"
+					},
+					{
+						"name": "Respondents",
+						"type": "String"
+					},
+					{
+						"name": "ResponseRate",
+						"type": "String"
+					},
+					{
+						"name": "Culture",
+						"type": "String"
+					},
+					{
+						"name": "Culture  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Trust - Team",
+						"type": "String"
+					},
+					{
+						"name": "Trust - Team  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Role Clarity Functional",
+						"type": "String"
+					},
+					{
+						"name": "Role Clarity Functional  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Growth Functional",
+						"type": "String"
+					},
+					{
+						"name": "Growth Functional  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Career",
+						"type": "String"
+					},
+					{
+						"name": "Career  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Continuous Improvement Functional",
+						"type": "String"
+					},
+					{
+						"name": "Continuous Improvement Functional  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Communication - Manager",
+						"type": "String"
+					},
+					{
+						"name": "Communication - Manager  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Support",
+						"type": "String"
+					},
+					{
+						"name": "Support  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Equal Opportunity",
+						"type": "String"
+					},
+					{
+						"name": "Equal Opportunity  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Distress - Well-being",
+						"type": "String"
+					},
+					{
+						"name": "Distress - Well-being  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Ethics Helpline",
+						"type": "String"
+					},
+					{
+						"name": "Ethics Helpline  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Work Life Balance",
+						"type": "String"
+					},
+					{
+						"name": "Work Life Balance  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Growth",
+						"type": "String"
+					},
+					{
+						"name": "Growth  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Cooperation",
+						"type": "String"
+					},
+					{
+						"name": "Cooperation  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Initiative",
+						"type": "String"
+					},
+					{
+						"name": "Initiative  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Decision Making",
+						"type": "String"
+					},
+					{
+						"name": "Decision Making  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index > Recommend",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index > Recommend  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Role Clarity",
+						"type": "String"
+					},
+					{
+						"name": "Role Clarity  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Resources",
+						"type": "String"
+					},
+					{
+						"name": "Resources  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index > eSat",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index > eSat  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Belonging",
+						"type": "String"
+					},
+					{
+						"name": "Belonging  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Prospects",
+						"type": "String"
+					},
+					{
+						"name": "Prospects  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Purpose Contribution",
+						"type": "String"
+					},
+					{
+						"name": "Purpose Contribution  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Inclusion - Team",
+						"type": "String"
+					},
+					{
+						"name": "Inclusion - Team  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Job Feedback",
+						"type": "String"
+					},
+					{
+						"name": "Job Feedback  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Consumer Focus - Culture",
+						"type": "String"
+					},
+					{
+						"name": "Consumer Focus - Culture  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Non-Discrimination",
+						"type": "String"
+					},
+					{
+						"name": "Non-Discrimination  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Code of Conduct",
+						"type": "String"
+					},
+					{
+						"name": "Code of Conduct  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Health & Safety",
+						"type": "String"
+					},
+					{
+						"name": "Health & Safety  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Continuous Improvement",
+						"type": "String"
+					},
+					{
+						"name": "Continuous Improvement  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Empowerment",
+						"type": "String"
+					},
+					{
+						"name": "Empowerment  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Environment",
+						"type": "String"
+					},
+					{
+						"name": "Environment  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Purpose",
+						"type": "String"
+					},
+					{
+						"name": "Purpose  %Favorable",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_data_lake')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_leaves')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_data_lake",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"url": "https://elxa2peopletechdev01.dfs.core.windows.net/"
+					}
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "Leaves User_audit_report.xlsx",
+						"folderPath": "leaves",
+						"fileSystem": "raw"
+					},
+					"sheetIndex": 0,
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "ID",
+						"type": "String"
+					},
+					{
+						"name": "Respondents",
+						"type": "String"
+					},
+					{
+						"name": "ResponseRate",
+						"type": "String"
+					},
+					{
+						"name": "Culture",
+						"type": "String"
+					},
+					{
+						"name": "Culture  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Trust - Team",
+						"type": "String"
+					},
+					{
+						"name": "Trust - Team  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Role Clarity Functional",
+						"type": "String"
+					},
+					{
+						"name": "Role Clarity Functional  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Growth Functional",
+						"type": "String"
+					},
+					{
+						"name": "Growth Functional  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Career",
+						"type": "String"
+					},
+					{
+						"name": "Career  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Continuous Improvement Functional",
+						"type": "String"
+					},
+					{
+						"name": "Continuous Improvement Functional  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Communication - Manager",
+						"type": "String"
+					},
+					{
+						"name": "Communication - Manager  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Support",
+						"type": "String"
+					},
+					{
+						"name": "Support  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Equal Opportunity",
+						"type": "String"
+					},
+					{
+						"name": "Equal Opportunity  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Distress - Well-being",
+						"type": "String"
+					},
+					{
+						"name": "Distress - Well-being  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Ethics Helpline",
+						"type": "String"
+					},
+					{
+						"name": "Ethics Helpline  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Work Life Balance",
+						"type": "String"
+					},
+					{
+						"name": "Work Life Balance  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Growth",
+						"type": "String"
+					},
+					{
+						"name": "Growth  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Cooperation",
+						"type": "String"
+					},
+					{
+						"name": "Cooperation  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Initiative",
+						"type": "String"
+					},
+					{
+						"name": "Initiative  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Decision Making",
+						"type": "String"
+					},
+					{
+						"name": "Decision Making  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index > Recommend",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index > Recommend  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Role Clarity",
+						"type": "String"
+					},
+					{
+						"name": "Role Clarity  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Resources",
+						"type": "String"
+					},
+					{
+						"name": "Resources  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index > eSat",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Index > eSat  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Belonging",
+						"type": "String"
+					},
+					{
+						"name": "Belonging  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Prospects",
+						"type": "String"
+					},
+					{
+						"name": "Prospects  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Purpose Contribution",
+						"type": "String"
+					},
+					{
+						"name": "Purpose Contribution  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Inclusion - Team",
+						"type": "String"
+					},
+					{
+						"name": "Inclusion - Team  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Job Feedback",
+						"type": "String"
+					},
+					{
+						"name": "Job Feedback  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Consumer Focus - Culture",
+						"type": "String"
+					},
+					{
+						"name": "Consumer Focus - Culture  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Non-Discrimination",
+						"type": "String"
+					},
+					{
+						"name": "Non-Discrimination  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Code of Conduct",
+						"type": "String"
+					},
+					{
+						"name": "Code of Conduct  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Health & Safety",
+						"type": "String"
+					},
+					{
+						"name": "Health & Safety  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Continuous Improvement",
+						"type": "String"
+					},
+					{
+						"name": "Continuous Improvement  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Empowerment",
+						"type": "String"
+					},
+					{
+						"name": "Empowerment  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Environment",
+						"type": "String"
+					},
+					{
+						"name": "Environment  %Favorable",
+						"type": "String"
+					},
+					{
+						"name": "Purpose",
+						"type": "String"
+					},
+					{
+						"name": "Purpose  %Favorable",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_data_lake')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sink')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_data_lake",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"url": "https://elxa2peopletechdev01.dfs.core.windows.net/"
+					}
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_data_lake')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"db_server_name": {
+						"type": "string"
+					},
+					"db_name": {
+						"type": "string"
+					},
+					"db_user": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSqlDatabase1_connectionString')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "ls_key_vault",
+							"type": "LinkedServiceReference",
+							"parameters": {
+								"kv_url": "https://elx-a2-ppltech-kv-dev.vault.azure.net/"
+							}
+						},
+						"secretName": "sql-db-password"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_key_vault')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_data_lake')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"url": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_data_lake_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "ls_key_vault",
+							"type": "LinkedServiceReference",
+							"parameters": {
+								"kv_url": "https://elx-a2-ppltech-kv-dev.vault.azure.net/"
+							}
+						},
+						"secretName": "storage-account-key"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_key_vault')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_key_vault')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"kv_url": {
+						"type": "string",
+						"defaultValue": "https://elx-a2-ppltech-kv-dev.vault.azure.net/"
+					}
+				},
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('ls_key_vault_properties_typeProperties_baseUrl')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/df_users_cc')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "vwuserscc",
+							"description": "[[reporting].[vw_users_cc]"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "vwuserhierarchy",
+							"description": "[[reporting].[vw_user_hierarchy_cc]"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "vwdivisionhierarchy",
+							"description": "[[reporting].[vw_division_hierarchy_cc]"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "ds_csv_file",
+								"type": "DatasetReference"
+							},
+							"name": "sinktocsv"
+						}
+					],
+					"transformations": [
+						{
+							"name": "joinusershierarchy"
+						},
+						{
+							"name": "joinusersdivision"
+						},
+						{
+							"name": "selectneededfields"
+						},
+						{
+							"name": "filterregion"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          {User ID Technical} as integer,",
+						"          {User Id} as string,",
+						"          {SAP ID} as string,",
+						"          {User Full Name} as string,",
+						"          {Original Hire Date} as date,",
+						"          {Job Title} as string,",
+						"          {Manager Full Name} as string,",
+						"          Region as string,",
+						"          {Country Of Payroll} as string,",
+						"          {Country of Location} as string,",
+						"          {User Status} as string,",
+						"          {Employment Status} as string,",
+						"          {Termination Date} as date,",
+						"          {Functional Area} as string,",
+						"          {Full time/Part time} as string,",
+						"          {Work Time / Capacity %} as double,",
+						"          {Cost Centre} as string,",
+						"          {Electrolux Legal Entity} as string,",
+						"          {Individual IPE Ref} as string,",
+						"          {Electrolux Legal Entity Ref} as string,",
+						"          {Division ID} as integer,",
+						"          Division as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT  [User ID Technical]\\n      ,[User Id]\\n      ,[SAP ID]\\n      ,[User Full Name]\\n      ,[Original Hire Date]\\n      ,[Job Title]\\n      ,[Manager Full Name]\\n      ,[Region]\\n      ,[Country Of Payroll]\\n      ,[Country of Location]\\n      ,[User Status]\\n      ,[Employment Status]\\n      ,[Termination Date]\\n      ,[Functional Area]\\n      ,[Full time/Part time]\\n      ,[Work Time / Capacity %]\\n      ,[Cost Centre]\\n      ,[Electrolux Legal Entity]\\n      ,[Individual IPE Ref]\\n      ,[Electrolux Legal Entity Ref]\\n      ,[Division ID]\\n      ,[Division]\\n  FROM [reporting].[vw_users_cc]',",
+						"     format: 'query') ~> vwuserscc",
+						"source(output(",
+						"          {User ID Technical} as integer,",
+						"          Name_Path as string,",
+						"          {User Name1} as string,",
+						"          {User Name2} as string,",
+						"          {User Name3} as string,",
+						"          {User Name4} as string,",
+						"          {User Name5} as string,",
+						"          {User Name6} as string,",
+						"          {User Name7} as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT [User ID Technical]\\n      ,[Name_Path]\\n      ,[User Name1]\\n      ,[User Name2]\\n      ,[User Name3]\\n      ,[User Name4]\\n      ,[User Name5]\\n      ,[User Name6]\\n      ,[User Name7]\\n  FROM [reporting].[vw_user_hierarchy_cc]',",
+						"     format: 'query') ~> vwuserhierarchy",
+						"source(output(",
+						"          {Division ID} as integer,",
+						"          {Division Name} as string,",
+						"          {Division Name1} as string,",
+						"          {Division Name2} as string,",
+						"          {Division Name3} as string,",
+						"          {Division Name4} as string,",
+						"          {Division Name5} as string,",
+						"          {Division Name6} as string,",
+						"          {Division Name7} as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT [Division ID]\\n      ,[Division Name]\\n      ,[Division Name1]\\n      ,[Division Name2]\\n      ,[Division Name3]\\n      ,[Division Name4]\\n      ,[Division Name5]\\n      ,[Division Name6]\\n      ,[Division Name7]\\n  FROM [reporting].[vw_division_hierarchy_cc]',",
+						"     format: 'query') ~> vwdivisionhierarchy",
+						"filterregion, vwuserhierarchy join(vwuserscc@{User ID Technical} == vwuserhierarchy@{User ID Technical},",
+						"     joinType:'inner',",
+						"     matchType:'exact',",
+						"     ignoreSpaces: false,",
+						"     broadcast: 'auto')~> joinusershierarchy",
+						"joinusershierarchy, vwdivisionhierarchy join(vwuserscc@{Division ID} == vwdivisionhierarchy@{Division ID},",
+						"     joinType:'inner',",
+						"     matchType:'exact',",
+						"     ignoreSpaces: false,",
+						"     broadcast: 'auto')~> joinusersdivision",
+						"joinusersdivision select(mapColumn(",
+						"          {User Id},",
+						"          {SAP ID},",
+						"          {User Full Name},",
+						"          {Original Hire Date},",
+						"          {Job Title},",
+						"          {Manager Full Name},",
+						"          Region,",
+						"          {Country Of Payroll},",
+						"          {Country of Location},",
+						"          {User Status},",
+						"          {Employment Status},",
+						"          {Termination Date},",
+						"          {Functional Area},",
+						"          {Full time/Part time},",
+						"          {Work Time / Capacity %},",
+						"          {Cost Centre},",
+						"          {Electrolux Legal Entity},",
+						"          {Electrolux Legal Entity Ref},",
+						"          Division,",
+						"          {Division Name1},",
+						"          {Division Name2},",
+						"          {Division Name3},",
+						"          {Division Name4},",
+						"          {Division Name5},",
+						"          {Division Name6},",
+						"          {Division Name7},",
+						"          {User Name1},",
+						"          {User Name2},",
+						"          {User Name3},",
+						"          {User Name4},",
+						"          {User Name5},",
+						"          {User Name6},",
+						"          {User Name7}",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> selectneededfields",
+						"vwuserscc filter(Region=='North America') ~> filterregion",
+						"selectneededfields sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     partitionFileNames:[(concat('userscostcenter',toString(currentDate()),'.csv')\r",
+						"\r",
+						")],",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     mapColumn(",
+						"          user_id = {User Id},",
+						"          sap_id = {SAP ID},",
+						"          user_full_name = {User Full Name},",
+						"          original_hire_date = {Original Hire Date},",
+						"          job_title = {Job Title},",
+						"          manager_full_name = {Manager Full Name},",
+						"          region = Region,",
+						"          country_of_payroll = {Country Of Payroll},",
+						"          country_of_location = {Country of Location},",
+						"          user_status = {User Status},",
+						"          employment_status = {Employment Status},",
+						"          termination_date = {Termination Date},",
+						"          functional_area = {Functional Area},",
+						"          full_time_part_time = {Full time/Part time},",
+						"          work_time_capacity = {Work Time / Capacity %},",
+						"          cost_centre = {Cost Centre},",
+						"          electrolux_legal_entity = {Electrolux Legal Entity},",
+						"          electrolux_legal_entity_ref = {Electrolux Legal Entity Ref},",
+						"          division = Division,",
+						"          division_name1 = {Division Name1},",
+						"          division_name2 = {Division Name2},",
+						"          division_name3 = {Division Name3},",
+						"          division_name4 = {Division Name4},",
+						"          division_name5 = {Division Name5},",
+						"          division_name6 = {Division Name6},",
+						"          division_name7 = {Division Name7},",
+						"          user_name1 = {User Name1},",
+						"          user_name2 = {User Name2},",
+						"          user_name3 = {User Name3},",
+						"          user_name4 = {User Name4},",
+						"          user_name5 = {User Name5},",
+						"          user_name6 = {User Name6},",
+						"          user_name7 = {User Name7}",
+						"     ),",
+						"     partitionBy('hash', 1)) ~> sinktocsv"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_azure_table')]",
+				"[concat(variables('factoryId'), '/datasets/ds_csv_file')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/df_pred_presc_01')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "ds_evs",
+								"type": "DatasetReference"
+							},
+							"name": "sourceExcelevs"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "ds_csv_file",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [],
+					"scriptLines": [
+						"source(output(",
+						"          ID as string,",
+						"          Respondents as string,",
+						"          ResponseRate as string,",
+						"          Culture as string,",
+						"          {Culture  %Favorable} as string,",
+						"          {Trust - Team} as string,",
+						"          {Trust - Team  %Favorable} as string,",
+						"          {Role Clarity Functional} as string,",
+						"          {Role Clarity Functional  %Favorable} as string,",
+						"          {Growth Functional} as string,",
+						"          {Growth Functional  %Favorable} as string,",
+						"          Career as string,",
+						"          {Career  %Favorable} as string,",
+						"          {Continuous Improvement Functional} as string,",
+						"          {Continuous Improvement Functional  %Favorable} as string,",
+						"          {Communication - Manager} as string,",
+						"          {Communication - Manager  %Favorable} as string,",
+						"          Support as string,",
+						"          {Support  %Favorable} as string,",
+						"          {Equal Opportunity} as string,",
+						"          {Equal Opportunity  %Favorable} as string,",
+						"          {Distress - Well-being} as string,",
+						"          {Distress - Well-being  %Favorable} as string,",
+						"          {Ethics Helpline} as string,",
+						"          {Ethics Helpline  %Favorable} as string,",
+						"          {Work Life Balance} as string,",
+						"          {Work Life Balance  %Favorable} as string,",
+						"          Growth as string,",
+						"          {Growth  %Favorable} as string,",
+						"          Cooperation as string,",
+						"          {Cooperation  %Favorable} as string,",
+						"          Initiative as string,",
+						"          {Initiative  %Favorable} as string,",
+						"          {Decision Making} as string,",
+						"          {Decision Making  %Favorable} as string,",
+						"          {Engagement Index} as string,",
+						"          {Engagement Index  %Favorable} as string,",
+						"          {Engagement Index > Recommend} as string,",
+						"          {Engagement Index > Recommend  %Favorable} as string,",
+						"          {Role Clarity} as string,",
+						"          {Role Clarity  %Favorable} as string,",
+						"          Resources as string,",
+						"          {Resources  %Favorable} as string,",
+						"          {Engagement Index > eSat} as string,",
+						"          {Engagement Index > eSat  %Favorable} as string,",
+						"          Belonging as string,",
+						"          {Belonging  %Favorable} as string,",
+						"          Prospects as string,",
+						"          {Prospects  %Favorable} as string,",
+						"          {Purpose Contribution} as string,",
+						"          {Purpose Contribution  %Favorable} as string,",
+						"          {Inclusion - Team} as string,",
+						"          {Inclusion - Team  %Favorable} as string,",
+						"          {Job Feedback} as string,",
+						"          {Job Feedback  %Favorable} as string,",
+						"          {Consumer Focus - Culture} as string,",
+						"          {Consumer Focus - Culture  %Favorable} as string,",
+						"          {Non-Discrimination} as string,",
+						"          {Non-Discrimination  %Favorable} as string,",
+						"          {Code of Conduct} as string,",
+						"          {Code of Conduct  %Favorable} as string,",
+						"          {Health & Safety} as string,",
+						"          {Health & Safety  %Favorable} as string,",
+						"          {Continuous Improvement} as string,",
+						"          {Continuous Improvement  %Favorable} as string,",
+						"          Empowerment as string,",
+						"          {Empowerment  %Favorable} as string,",
+						"          Environment as string,",
+						"          {Environment  %Favorable} as string,",
+						"          Purpose as string,",
+						"          {Purpose  %Favorable} as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> sourceExcelevs",
+						"sourceExcelevs sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink1"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_evs')]",
+				"[concat(variables('factoryId'), '/datasets/ds_csv_file')]"
+			]
+		}
+	]
+}
