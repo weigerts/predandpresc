@@ -1536,6 +1536,46 @@
 								"type": "DatasetReference"
 							},
 							"name": "sourceexcelleaves"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcesqldevplancore",
+							"description": "[[dataexporter].[devplan_core]"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcesqlrpttranscript",
+							"description": "[reporting].[vw_rpt_transcript] \n"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcesqlrptusercf",
+							"description": "[[reporting].[vw_rpt_user_cf]"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcesqlsurveyresponse",
+							"description": "[dbo].[SurveyResponse]\n"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcesqlhistoricalsnapshot",
+							"description": "[[datatransformation].[HistoricalSnapshot]"
 						}
 					],
 					"sinks": [
@@ -1796,6 +1836,77 @@
 						"     allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     ignoreNoFilesFound: false) ~> sourceexcelleaves",
+						"source(output(",
+						"          count_devplan_id as integer,",
+						"          assigned_user_id as integer,",
+						"          year as integer",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT count( distinct [devplan_id]) count_devplan_id,\\n      [assigned_user_id],year(devplan_created_dt) year\\n      FROM [dataexporter].[devplan_core] group by\\n  year(devplan_created_dt),[assigned_user_id]',",
+						"     format: 'query') ~> sourcesqldevplancore",
+						"source(output(",
+						"          count_transc_obj_id as integer,",
+						"          year as integer,",
+						"          trans_user_id as integer",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT count(distinct transc_object_id) count_transc_obj_id\\n      ,year([user_lo_create_dt]) year    \\n      ,[transc_user_id] trans_user_id     \\n  FROM [reporting].[vw_rpt_transcript] where year([user_lo_create_dt])>2018 \\n  group by year([user_lo_create_dt])    \\n      ,[transc_user_id] \\n',",
+						"     format: 'query') ~> sourcesqlrpttranscript",
+						"source(output(",
+						"          user_cf_user_id as integer,",
+						"          current_abs_compa_ratio as double,",
+						"          current_ttc_compa_ratio as double",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT [user_cf_user_id]     \\n      ,[current_abs_compa_ratio]     \\n      ,[current_ttc_compa_ratio]     \\n  FROM [reporting].[vw_rpt_user_cf] where current_abs_compa_ratio is not null',",
+						"     format: 'query') ~> sourcesqlrptusercf",
+						"source(output(",
+						"          RespondersEmail as string,",
+						"          QuestionTitle as string,",
+						"          Answer as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT \\n      [RespondersEmail]      \\n      ,[QuestionTitle]     \\n      ,[Answer]\\n  FROM [dbo].[SurveyResponse] where CreatedBy like \\'%ee4%\\' and QuestionID=\\'4\\'',",
+						"     format: 'query') ~> sourcesqlsurveyresponse",
+						"source(output(",
+						"          Id as long,",
+						"          user_id as string,",
+						"          division as string,",
+						"          job_family as string,",
+						"          functional_area as string,",
+						"          reason_for_leaving as string,",
+						"          termination_type as string,",
+						"          termination_date as timestamp,",
+						"          original_hire_date as timestamp,",
+						"          electrolux_legal_entity as string,",
+						"          organizational_area as string,",
+						"          region as string,",
+						"          tier_level as integer,",
+						"          job_level_sub_band as string,",
+						"          job_level_band as string,",
+						"          employee_nationality as string,",
+						"          is_line_manager as string,",
+						"          country_of_location as string,",
+						"          employee_type as string,",
+						"          date_of_birth as timestamp,",
+						"          employee_gender as string,",
+						"          job_family_id as integer,",
+						"          job_family_ref as string,",
+						"          manager_id as integer",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: '\\nSELECT [Id]\\n      ,[user_id]\\n      ,[division]\\n      ,[job_family]\\n      ,[functional_area]\\n      ,[reason_for_leaving]\\n      ,[termination_type]\\n      ,[termination_date]\\n      ,[original_hire_date]\\n      ,[electrolux_legal_entity]\\n      ,[organizational_area]\\n      ,[region]\\n      ,[tier_level]\\n      ,[job_level_sub_band]\\n      ,[job_level_band]\\n      ,[employee_nationality]\\n      ,[is_line_manager]\\n      ,[country_of_location]\\n      ,[employee_type]\\n      ,[date_of_birth]\\n      ,[employee_gender]\\n      ,[job_family_id]\\n      ,[job_family_ref]\\n      ,[manager_id]\\n  FROM [datatransformation].[HistoricalSnapshot]\\n',",
+						"     format: 'query') ~> sourcesqlhistoricalsnapshot",
 						"sourceExcelevs sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     umask: 0022,",
@@ -1811,6 +1922,7 @@
 				"[concat(variables('factoryId'), '/datasets/ds_abs')]",
 				"[concat(variables('factoryId'), '/datasets/ds_ipe')]",
 				"[concat(variables('factoryId'), '/datasets/ds_leaves')]",
+				"[concat(variables('factoryId'), '/datasets/ds_azure_table')]",
 				"[concat(variables('factoryId'), '/datasets/ds_csv_file')]"
 			]
 		},
