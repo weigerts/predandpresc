@@ -1576,6 +1576,21 @@
 							},
 							"name": "sourcesqlhistoricalsnapshot",
 							"description": "[[datatransformation].[HistoricalSnapshot]"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcedbrptperformancereview"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcesqlsuccessionincumbent",
+							"description": "vw_rpt_succession_incumbent_smp_cf"
 						}
 					],
 					"sinks": [
@@ -1907,6 +1922,26 @@
 						"     isolationLevel: 'READ_UNCOMMITTED',",
 						"     query: '\\nSELECT [Id]\\n      ,[user_id]\\n      ,[division]\\n      ,[job_family]\\n      ,[functional_area]\\n      ,[reason_for_leaving]\\n      ,[termination_type]\\n      ,[termination_date]\\n      ,[original_hire_date]\\n      ,[electrolux_legal_entity]\\n      ,[organizational_area]\\n      ,[region]\\n      ,[tier_level]\\n      ,[job_level_sub_band]\\n      ,[job_level_band]\\n      ,[employee_nationality]\\n      ,[is_line_manager]\\n      ,[country_of_location]\\n      ,[employee_type]\\n      ,[date_of_birth]\\n      ,[employee_gender]\\n      ,[job_family_id]\\n      ,[job_family_ref]\\n      ,[manager_id]\\n  FROM [datatransformation].[HistoricalSnapshot]\\n',",
 						"     format: 'query') ~> sourcesqlhistoricalsnapshot",
+						"source(output(",
+						"          user_id as integer,",
+						"          year as string,",
+						"          task_user_override as decimal(18,2)",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT [user_id]\\n      ,right([task_name],4) year\\n      ,[task_user_override]\\n        FROM [reporting].[vw_rpt_performance_review]',",
+						"     format: 'query') ~> sourcedbrptperformancereview",
+						"source(output(",
+						"          user_id as integer,",
+						"          task_id as integer,",
+						"          rating as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT [warehouse_smp_custom_fields_user_id] user_id\\n      ,[warehouse_smp_custom_fields_task_id] task_id\\n      ,RIGHT([smp_custom_field_02133],4) rating\\n  FROM [reporting].[vw_rpt_succession_incumbent_smp_cf]',",
+						"     format: 'query') ~> sourcesqlsuccessionincumbent",
 						"sourceExcelevs sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     umask: 0022,",
