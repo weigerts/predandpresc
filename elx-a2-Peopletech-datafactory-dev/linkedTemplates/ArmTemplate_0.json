@@ -1164,7 +1164,16 @@
 					],
 					"transformations": [
 						{
-							"name": "aggregate1"
+							"name": "aggregateipe"
+						},
+						{
+							"name": "joinevsrptuser"
+						},
+						{
+							"name": "aggregateabs"
+						},
+						{
+							"name": "joinevsrptuserabs"
 						}
 					],
 					"scriptLines": [
@@ -1480,8 +1489,20 @@
 						"     query: 'select * from reporting.vw_users_cc',",
 						"     format: 'query') ~> sourcesqlrptuser",
 						"sourceexcelipe aggregate(groupBy({User ID}),",
-						"     {Date position changed} = max({Date effective})) ~> aggregate1",
-						"sourceExcelevs sink(allowSchemaDrift: true,",
+						"     {Date position changed} = max({Date effective})) ~> aggregateipe",
+						"sourceExcelevs, sourcesqlrptuser join(ID == {Manager Ref},",
+						"     joinType:'inner',",
+						"     matchType:'exact',",
+						"     ignoreSpaces: false,",
+						"     broadcast: 'auto')~> joinevsrptuser",
+						"sourceexcelabs aggregate(groupBy({User ID}),",
+						"     {Max Effective Date} = max({Date effective})) ~> aggregateabs",
+						"joinevsrptuser, aggregateabs join(sourcesqlrptuser@{User Id} == aggregateabs@{User ID},",
+						"     joinType:'inner',",
+						"     matchType:'exact',",
+						"     ignoreSpaces: false,",
+						"     broadcast: 'auto')~> joinevsrptuserabs",
+						"joinevsrptuserabs sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     umask: 0022,",
 						"     preCommands: [],",
