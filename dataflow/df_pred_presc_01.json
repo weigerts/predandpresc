@@ -114,6 +114,9 @@
 				},
 				{
 					"name": "aggregateabs"
+				},
+				{
+					"name": "joinevsrptuserabs"
 				}
 			],
 			"scriptLines": [
@@ -437,7 +440,12 @@
 				"     broadcast: 'auto')~> joinevsrptuser",
 				"sourceexcelabs aggregate(groupBy({User ID}),",
 				"     {Max Effective Date} = max({Date effective})) ~> aggregateabs",
-				"joinevsrptuser sink(allowSchemaDrift: true,",
+				"joinevsrptuser, aggregateabs join(sourcesqlrptuser@{User Id} == aggregateabs@{User ID},",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinevsrptuserabs",
+				"joinevsrptuserabs sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
 				"     preCommands: [],",
