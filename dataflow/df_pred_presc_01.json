@@ -117,6 +117,9 @@
 				},
 				{
 					"name": "joinevsrptuserabs"
+				},
+				{
+					"name": "joinevsrptuserabsipe"
 				}
 			],
 			"scriptLines": [
@@ -445,7 +448,12 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> joinevsrptuserabs",
-				"joinevsrptuserabs sink(allowSchemaDrift: true,",
+				"joinevsrptuserabs, aggregateipe join(sourcesqlrptuser@{User Id} == aggregateipe@{User ID},",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinevsrptuserabsipe",
+				"joinevsrptuserabsipe sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
 				"     preCommands: [],",
