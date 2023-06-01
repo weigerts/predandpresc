@@ -614,287 +614,59 @@
 				},
 				"schema": [
 					{
-						"name": "ID",
+						"name": "User First Name",
 						"type": "String"
 					},
 					{
-						"name": "Respondents",
+						"name": "User Last Name",
 						"type": "String"
 					},
 					{
-						"name": "ResponseRate",
+						"name": "User ID",
 						"type": "String"
 					},
 					{
-						"name": "Culture",
+						"name": "Local system ID",
 						"type": "String"
 					},
 					{
-						"name": "Culture  %Favorable",
+						"name": "Type",
 						"type": "String"
 					},
 					{
-						"name": "Trust - Team",
+						"name": "Status",
 						"type": "String"
 					},
 					{
-						"name": "Trust - Team  %Favorable",
+						"name": "Date changed",
 						"type": "String"
 					},
 					{
-						"name": "Role Clarity Functional",
+						"name": "Date effective",
 						"type": "String"
 					},
 					{
-						"name": "Role Clarity Functional  %Favorable",
+						"name": "Field modified",
 						"type": "String"
 					},
 					{
-						"name": "Growth Functional",
+						"name": "Field type",
 						"type": "String"
 					},
 					{
-						"name": "Growth Functional  %Favorable",
+						"name": "Field changed from",
 						"type": "String"
 					},
 					{
-						"name": "Career",
+						"name": "Field changed to",
 						"type": "String"
 					},
 					{
-						"name": "Career  %Favorable",
+						"name": "Field changed by",
 						"type": "String"
 					},
 					{
-						"name": "Continuous Improvement Functional",
-						"type": "String"
-					},
-					{
-						"name": "Continuous Improvement Functional  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Communication - Manager",
-						"type": "String"
-					},
-					{
-						"name": "Communication - Manager  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Support",
-						"type": "String"
-					},
-					{
-						"name": "Support  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Equal Opportunity",
-						"type": "String"
-					},
-					{
-						"name": "Equal Opportunity  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Distress - Well-being",
-						"type": "String"
-					},
-					{
-						"name": "Distress - Well-being  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Ethics Helpline",
-						"type": "String"
-					},
-					{
-						"name": "Ethics Helpline  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Work Life Balance",
-						"type": "String"
-					},
-					{
-						"name": "Work Life Balance  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Growth",
-						"type": "String"
-					},
-					{
-						"name": "Growth  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Cooperation",
-						"type": "String"
-					},
-					{
-						"name": "Cooperation  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Initiative",
-						"type": "String"
-					},
-					{
-						"name": "Initiative  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Decision Making",
-						"type": "String"
-					},
-					{
-						"name": "Decision Making  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Engagement Index",
-						"type": "String"
-					},
-					{
-						"name": "Engagement Index  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Engagement Index > Recommend",
-						"type": "String"
-					},
-					{
-						"name": "Engagement Index > Recommend  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Role Clarity",
-						"type": "String"
-					},
-					{
-						"name": "Role Clarity  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Resources",
-						"type": "String"
-					},
-					{
-						"name": "Resources  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Engagement Index > eSat",
-						"type": "String"
-					},
-					{
-						"name": "Engagement Index > eSat  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Belonging",
-						"type": "String"
-					},
-					{
-						"name": "Belonging  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Prospects",
-						"type": "String"
-					},
-					{
-						"name": "Prospects  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Purpose Contribution",
-						"type": "String"
-					},
-					{
-						"name": "Purpose Contribution  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Inclusion - Team",
-						"type": "String"
-					},
-					{
-						"name": "Inclusion - Team  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Job Feedback",
-						"type": "String"
-					},
-					{
-						"name": "Job Feedback  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Consumer Focus - Culture",
-						"type": "String"
-					},
-					{
-						"name": "Consumer Focus - Culture  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Non-Discrimination",
-						"type": "String"
-					},
-					{
-						"name": "Non-Discrimination  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Code of Conduct",
-						"type": "String"
-					},
-					{
-						"name": "Code of Conduct  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Health & Safety",
-						"type": "String"
-					},
-					{
-						"name": "Health & Safety  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Continuous Improvement",
-						"type": "String"
-					},
-					{
-						"name": "Continuous Improvement  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Empowerment",
-						"type": "String"
-					},
-					{
-						"name": "Empowerment  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Environment",
-						"type": "String"
-					},
-					{
-						"name": "Environment  %Favorable",
-						"type": "String"
-					},
-					{
-						"name": "Purpose",
-						"type": "String"
-					},
-					{
-						"name": "Purpose  %Favorable",
+						"name": "Reason for change",
 						"type": "String"
 					}
 				]
@@ -1332,6 +1104,453 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/df_pred_presc_01')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "ds_evs",
+								"type": "DatasetReference"
+							},
+							"name": "sourceExcelevs"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_abs",
+								"type": "DatasetReference"
+							},
+							"name": "sourceexcelabs"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_ipe",
+								"type": "DatasetReference"
+							},
+							"name": "sourceexcelipe"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_leaves",
+								"type": "DatasetReference"
+							},
+							"name": "sourceexcelleaves"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcesqldevplancore",
+							"description": "[[dataexporter].[devplan_core]"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcesqlrpttranscript",
+							"description": "[reporting].[vw_rpt_transcript] \n"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcesqlrptusercf",
+							"description": "[[reporting].[vw_rpt_user_cf]"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcesqlsurveyresponse",
+							"description": "[dbo].[SurveyResponse]\n"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcesqlhistoricalsnapshot",
+							"description": "[[datatransformation].[HistoricalSnapshot]"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcedbrptperformancereview"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcesqlsuccessionincumbent",
+							"description": "vw_rpt_succession_incumbent_smp_cf"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_azure_table",
+								"type": "DatasetReference"
+							},
+							"name": "sourcesqlrptuser",
+							"description": "[[reporting].[vw_users_cc]"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "ds_csv_file",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "aggregate1"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          ID as string,",
+						"          Respondents as string,",
+						"          ResponseRate as string,",
+						"          Culture as string,",
+						"          {Culture  %Favorable} as string,",
+						"          {Trust - Team} as string,",
+						"          {Trust - Team  %Favorable} as string,",
+						"          {Role Clarity Functional} as string,",
+						"          {Role Clarity Functional  %Favorable} as string,",
+						"          {Growth Functional} as string,",
+						"          {Growth Functional  %Favorable} as string,",
+						"          Career as string,",
+						"          {Career  %Favorable} as string,",
+						"          {Continuous Improvement Functional} as string,",
+						"          {Continuous Improvement Functional  %Favorable} as string,",
+						"          {Communication - Manager} as string,",
+						"          {Communication - Manager  %Favorable} as string,",
+						"          Support as string,",
+						"          {Support  %Favorable} as string,",
+						"          {Equal Opportunity} as string,",
+						"          {Equal Opportunity  %Favorable} as string,",
+						"          {Distress - Well-being} as string,",
+						"          {Distress - Well-being  %Favorable} as string,",
+						"          {Ethics Helpline} as string,",
+						"          {Ethics Helpline  %Favorable} as string,",
+						"          {Work Life Balance} as string,",
+						"          {Work Life Balance  %Favorable} as string,",
+						"          Growth as string,",
+						"          {Growth  %Favorable} as string,",
+						"          Cooperation as string,",
+						"          {Cooperation  %Favorable} as string,",
+						"          Initiative as string,",
+						"          {Initiative  %Favorable} as string,",
+						"          {Decision Making} as string,",
+						"          {Decision Making  %Favorable} as string,",
+						"          {Engagement Index} as string,",
+						"          {Engagement Index  %Favorable} as string,",
+						"          {Engagement Index > Recommend} as string,",
+						"          {Engagement Index > Recommend  %Favorable} as string,",
+						"          {Role Clarity} as string,",
+						"          {Role Clarity  %Favorable} as string,",
+						"          Resources as string,",
+						"          {Resources  %Favorable} as string,",
+						"          {Engagement Index > eSat} as string,",
+						"          {Engagement Index > eSat  %Favorable} as string,",
+						"          Belonging as string,",
+						"          {Belonging  %Favorable} as string,",
+						"          Prospects as string,",
+						"          {Prospects  %Favorable} as string,",
+						"          {Purpose Contribution} as string,",
+						"          {Purpose Contribution  %Favorable} as string,",
+						"          {Inclusion - Team} as string,",
+						"          {Inclusion - Team  %Favorable} as string,",
+						"          {Job Feedback} as string,",
+						"          {Job Feedback  %Favorable} as string,",
+						"          {Consumer Focus - Culture} as string,",
+						"          {Consumer Focus - Culture  %Favorable} as string,",
+						"          {Non-Discrimination} as string,",
+						"          {Non-Discrimination  %Favorable} as string,",
+						"          {Code of Conduct} as string,",
+						"          {Code of Conduct  %Favorable} as string,",
+						"          {Health & Safety} as string,",
+						"          {Health & Safety  %Favorable} as string,",
+						"          {Continuous Improvement} as string,",
+						"          {Continuous Improvement  %Favorable} as string,",
+						"          Empowerment as string,",
+						"          {Empowerment  %Favorable} as string,",
+						"          Environment as string,",
+						"          {Environment  %Favorable} as string,",
+						"          Purpose as string,",
+						"          {Purpose  %Favorable} as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> sourceExcelevs",
+						"source(output(",
+						"          {User First Name} as string,",
+						"          {User Last Name} as string,",
+						"          {User ID} as string,",
+						"          {Local system ID} as string,",
+						"          Type as string,",
+						"          Status as string,",
+						"          {Date changed} as string,",
+						"          {Date effective} as string,",
+						"          {Field modified} as string,",
+						"          {Field type} as string,",
+						"          {Field changed from} as string,",
+						"          {Field changed to} as string,",
+						"          {Field changed by} as string,",
+						"          {Reason for change} as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> sourceexcelabs",
+						"source(output(",
+						"          {User First Name} as string,",
+						"          {User Last Name} as string,",
+						"          {User ID} as string,",
+						"          {Local system ID} as string,",
+						"          Type as string,",
+						"          Status as string,",
+						"          {Date changed} as string,",
+						"          {Date effective} as date 'dd/MM/yyyy',",
+						"          {Field modified} as string,",
+						"          {Field type} as string,",
+						"          {Field changed from} as string,",
+						"          {Field changed to} as string,",
+						"          {Field changed by} as string,",
+						"          {Reason for change} as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> sourceexcelipe",
+						"source(output(",
+						"          ID as string,",
+						"          Respondents as string,",
+						"          ResponseRate as string,",
+						"          Culture as string,",
+						"          {Culture  %Favorable} as string,",
+						"          {Trust - Team} as string,",
+						"          {Trust - Team  %Favorable} as string,",
+						"          {Role Clarity Functional} as string,",
+						"          {Role Clarity Functional  %Favorable} as string,",
+						"          {Growth Functional} as string,",
+						"          {Growth Functional  %Favorable} as string,",
+						"          Career as string,",
+						"          {Career  %Favorable} as string,",
+						"          {Continuous Improvement Functional} as string,",
+						"          {Continuous Improvement Functional  %Favorable} as string,",
+						"          {Communication - Manager} as string,",
+						"          {Communication - Manager  %Favorable} as string,",
+						"          Support as string,",
+						"          {Support  %Favorable} as string,",
+						"          {Equal Opportunity} as string,",
+						"          {Equal Opportunity  %Favorable} as string,",
+						"          {Distress - Well-being} as string,",
+						"          {Distress - Well-being  %Favorable} as string,",
+						"          {Ethics Helpline} as string,",
+						"          {Ethics Helpline  %Favorable} as string,",
+						"          {Work Life Balance} as string,",
+						"          {Work Life Balance  %Favorable} as string,",
+						"          Growth as string,",
+						"          {Growth  %Favorable} as string,",
+						"          Cooperation as string,",
+						"          {Cooperation  %Favorable} as string,",
+						"          Initiative as string,",
+						"          {Initiative  %Favorable} as string,",
+						"          {Decision Making} as string,",
+						"          {Decision Making  %Favorable} as string,",
+						"          {Engagement Index} as string,",
+						"          {Engagement Index  %Favorable} as string,",
+						"          {Engagement Index > Recommend} as string,",
+						"          {Engagement Index > Recommend  %Favorable} as string,",
+						"          {Role Clarity} as string,",
+						"          {Role Clarity  %Favorable} as string,",
+						"          Resources as string,",
+						"          {Resources  %Favorable} as string,",
+						"          {Engagement Index > eSat} as string,",
+						"          {Engagement Index > eSat  %Favorable} as string,",
+						"          Belonging as string,",
+						"          {Belonging  %Favorable} as string,",
+						"          Prospects as string,",
+						"          {Prospects  %Favorable} as string,",
+						"          {Purpose Contribution} as string,",
+						"          {Purpose Contribution  %Favorable} as string,",
+						"          {Inclusion - Team} as string,",
+						"          {Inclusion - Team  %Favorable} as string,",
+						"          {Job Feedback} as string,",
+						"          {Job Feedback  %Favorable} as string,",
+						"          {Consumer Focus - Culture} as string,",
+						"          {Consumer Focus - Culture  %Favorable} as string,",
+						"          {Non-Discrimination} as string,",
+						"          {Non-Discrimination  %Favorable} as string,",
+						"          {Code of Conduct} as string,",
+						"          {Code of Conduct  %Favorable} as string,",
+						"          {Health & Safety} as string,",
+						"          {Health & Safety  %Favorable} as string,",
+						"          {Continuous Improvement} as string,",
+						"          {Continuous Improvement  %Favorable} as string,",
+						"          Empowerment as string,",
+						"          {Empowerment  %Favorable} as string,",
+						"          Environment as string,",
+						"          {Environment  %Favorable} as string,",
+						"          Purpose as string,",
+						"          {Purpose  %Favorable} as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> sourceexcelleaves",
+						"source(output(",
+						"          count_devplan_id as integer,",
+						"          assigned_user_id as integer,",
+						"          year as integer",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT count( distinct [devplan_id]) count_devplan_id,\\n      [assigned_user_id],year(devplan_created_dt) year\\n      FROM [dataexporter].[devplan_core] group by\\n  year(devplan_created_dt),[assigned_user_id]',",
+						"     format: 'query') ~> sourcesqldevplancore",
+						"source(output(",
+						"          count_transc_obj_id as integer,",
+						"          year as integer,",
+						"          trans_user_id as integer",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT count(distinct transc_object_id) count_transc_obj_id\\n      ,year([user_lo_create_dt]) year    \\n      ,[transc_user_id] trans_user_id     \\n  FROM [reporting].[vw_rpt_transcript] where year([user_lo_create_dt])>2018 \\n  group by year([user_lo_create_dt])    \\n      ,[transc_user_id] \\n',",
+						"     format: 'query') ~> sourcesqlrpttranscript",
+						"source(output(",
+						"          user_cf_user_id as integer,",
+						"          current_abs_compa_ratio as double,",
+						"          current_ttc_compa_ratio as double",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT [user_cf_user_id]     \\n      ,[current_abs_compa_ratio]     \\n      ,[current_ttc_compa_ratio]     \\n  FROM [reporting].[vw_rpt_user_cf] where current_abs_compa_ratio is not null',",
+						"     format: 'query') ~> sourcesqlrptusercf",
+						"source(output(",
+						"          RespondersEmail as string,",
+						"          QuestionTitle as string,",
+						"          Answer as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT \\n      [RespondersEmail]      \\n      ,[QuestionTitle]     \\n      ,[Answer]\\n  FROM [dbo].[SurveyResponse] where CreatedBy like \\'%ee4%\\' and QuestionID=\\'4\\'',",
+						"     format: 'query') ~> sourcesqlsurveyresponse",
+						"source(output(",
+						"          Id as long,",
+						"          user_id as string,",
+						"          division as string,",
+						"          job_family as string,",
+						"          functional_area as string,",
+						"          reason_for_leaving as string,",
+						"          termination_type as string,",
+						"          termination_date as timestamp,",
+						"          original_hire_date as timestamp,",
+						"          electrolux_legal_entity as string,",
+						"          organizational_area as string,",
+						"          region as string,",
+						"          tier_level as integer,",
+						"          job_level_sub_band as string,",
+						"          job_level_band as string,",
+						"          employee_nationality as string,",
+						"          is_line_manager as string,",
+						"          country_of_location as string,",
+						"          employee_type as string,",
+						"          date_of_birth as timestamp,",
+						"          employee_gender as string,",
+						"          job_family_id as integer,",
+						"          job_family_ref as string,",
+						"          manager_id as integer",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: '\\nSELECT [Id]\\n      ,[user_id]\\n      ,[division]\\n      ,[job_family]\\n      ,[functional_area]\\n      ,[reason_for_leaving]\\n      ,[termination_type]\\n      ,[termination_date]\\n      ,[original_hire_date]\\n      ,[electrolux_legal_entity]\\n      ,[organizational_area]\\n      ,[region]\\n      ,[tier_level]\\n      ,[job_level_sub_band]\\n      ,[job_level_band]\\n      ,[employee_nationality]\\n      ,[is_line_manager]\\n      ,[country_of_location]\\n      ,[employee_type]\\n      ,[date_of_birth]\\n      ,[employee_gender]\\n      ,[job_family_id]\\n      ,[job_family_ref]\\n      ,[manager_id]\\n  FROM [datatransformation].[HistoricalSnapshot]\\n',",
+						"     format: 'query') ~> sourcesqlhistoricalsnapshot",
+						"source(output(",
+						"          user_id as integer,",
+						"          year as string,",
+						"          task_user_override as decimal(18,2)",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT [user_id]\\n      ,right([task_name],4) year\\n      ,[task_user_override]\\n        FROM [reporting].[vw_rpt_performance_review]',",
+						"     format: 'query') ~> sourcedbrptperformancereview",
+						"source(output(",
+						"          user_id as integer,",
+						"          task_id as integer,",
+						"          rating as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'SELECT [warehouse_smp_custom_fields_user_id] user_id\\n      ,[warehouse_smp_custom_fields_task_id] task_id\\n      ,RIGHT([smp_custom_field_02133],4) rating\\n  FROM [reporting].[vw_rpt_succession_incumbent_smp_cf]',",
+						"     format: 'query') ~> sourcesqlsuccessionincumbent",
+						"source(output(",
+						"          {User ID Technical} as integer,",
+						"          {User Id} as string,",
+						"          {SAP ID} as string,",
+						"          {User Full Name} as string,",
+						"          {Original Hire Date} as string,",
+						"          {Job Title} as string,",
+						"          {Manager Ref} as string,",
+						"          {Manager Full Name} as string,",
+						"          Region as string,",
+						"          {Country Of Payroll} as string,",
+						"          {Country of Location} as string,",
+						"          {User Status} as string,",
+						"          {Employment Status} as string,",
+						"          {Termination Date} as string,",
+						"          {Functional Area} as string,",
+						"          {Full time/Part time} as string,",
+						"          {Work Time / Capacity %} as double,",
+						"          {Cost Centre} as string,",
+						"          {Electrolux Legal Entity} as string,",
+						"          {Individual IPE Ref} as string,",
+						"          {Electrolux Legal Entity Ref} as string,",
+						"          {Division ID} as integer,",
+						"          Division as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     query: 'select * from reporting.vw_users_cc',",
+						"     format: 'query') ~> sourcesqlrptuser",
+						"sourceexcelipe aggregate(groupBy({User ID}),",
+						"     {Date position changed} = max({Date effective})) ~> aggregate1",
+						"sourceExcelevs sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink1"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_evs')]",
+				"[concat(variables('factoryId'), '/datasets/ds_abs')]",
+				"[concat(variables('factoryId'), '/datasets/ds_ipe')]",
+				"[concat(variables('factoryId'), '/datasets/ds_leaves')]",
+				"[concat(variables('factoryId'), '/datasets/ds_azure_table')]",
+				"[concat(variables('factoryId'), '/datasets/ds_csv_file')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/df_users_cc')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
@@ -1547,466 +1766,6 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_azure_table')]",
-				"[concat(variables('factoryId'), '/datasets/ds_csv_file')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/df_pred_presc_01')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "ds_evs",
-								"type": "DatasetReference"
-							},
-							"name": "sourceExcelevs"
-						},
-						{
-							"dataset": {
-								"referenceName": "ds_abs",
-								"type": "DatasetReference"
-							},
-							"name": "sourceexcelabs"
-						},
-						{
-							"dataset": {
-								"referenceName": "ds_ipe",
-								"type": "DatasetReference"
-							},
-							"name": "sourceexcelipe"
-						},
-						{
-							"dataset": {
-								"referenceName": "ds_leaves",
-								"type": "DatasetReference"
-							},
-							"name": "sourceexcelleaves"
-						},
-						{
-							"dataset": {
-								"referenceName": "ds_azure_table",
-								"type": "DatasetReference"
-							},
-							"name": "sourcesqldevplancore",
-							"description": "[[dataexporter].[devplan_core]"
-						},
-						{
-							"dataset": {
-								"referenceName": "ds_azure_table",
-								"type": "DatasetReference"
-							},
-							"name": "sourcesqlrpttranscript",
-							"description": "[reporting].[vw_rpt_transcript] \n"
-						},
-						{
-							"dataset": {
-								"referenceName": "ds_azure_table",
-								"type": "DatasetReference"
-							},
-							"name": "sourcesqlrptusercf",
-							"description": "[[reporting].[vw_rpt_user_cf]"
-						},
-						{
-							"dataset": {
-								"referenceName": "ds_azure_table",
-								"type": "DatasetReference"
-							},
-							"name": "sourcesqlsurveyresponse",
-							"description": "[dbo].[SurveyResponse]\n"
-						},
-						{
-							"dataset": {
-								"referenceName": "ds_azure_table",
-								"type": "DatasetReference"
-							},
-							"name": "sourcesqlhistoricalsnapshot",
-							"description": "[[datatransformation].[HistoricalSnapshot]"
-						},
-						{
-							"dataset": {
-								"referenceName": "ds_azure_table",
-								"type": "DatasetReference"
-							},
-							"name": "sourcedbrptperformancereview"
-						},
-						{
-							"dataset": {
-								"referenceName": "ds_azure_table",
-								"type": "DatasetReference"
-							},
-							"name": "sourcesqlsuccessionincumbent",
-							"description": "vw_rpt_succession_incumbent_smp_cf"
-						}
-					],
-					"sinks": [
-						{
-							"dataset": {
-								"referenceName": "ds_csv_file",
-								"type": "DatasetReference"
-							},
-							"name": "sink1"
-						}
-					],
-					"transformations": [],
-					"scriptLines": [
-						"source(output(",
-						"          ID as string,",
-						"          Respondents as string,",
-						"          ResponseRate as string,",
-						"          Culture as string,",
-						"          {Culture  %Favorable} as string,",
-						"          {Trust - Team} as string,",
-						"          {Trust - Team  %Favorable} as string,",
-						"          {Role Clarity Functional} as string,",
-						"          {Role Clarity Functional  %Favorable} as string,",
-						"          {Growth Functional} as string,",
-						"          {Growth Functional  %Favorable} as string,",
-						"          Career as string,",
-						"          {Career  %Favorable} as string,",
-						"          {Continuous Improvement Functional} as string,",
-						"          {Continuous Improvement Functional  %Favorable} as string,",
-						"          {Communication - Manager} as string,",
-						"          {Communication - Manager  %Favorable} as string,",
-						"          Support as string,",
-						"          {Support  %Favorable} as string,",
-						"          {Equal Opportunity} as string,",
-						"          {Equal Opportunity  %Favorable} as string,",
-						"          {Distress - Well-being} as string,",
-						"          {Distress - Well-being  %Favorable} as string,",
-						"          {Ethics Helpline} as string,",
-						"          {Ethics Helpline  %Favorable} as string,",
-						"          {Work Life Balance} as string,",
-						"          {Work Life Balance  %Favorable} as string,",
-						"          Growth as string,",
-						"          {Growth  %Favorable} as string,",
-						"          Cooperation as string,",
-						"          {Cooperation  %Favorable} as string,",
-						"          Initiative as string,",
-						"          {Initiative  %Favorable} as string,",
-						"          {Decision Making} as string,",
-						"          {Decision Making  %Favorable} as string,",
-						"          {Engagement Index} as string,",
-						"          {Engagement Index  %Favorable} as string,",
-						"          {Engagement Index > Recommend} as string,",
-						"          {Engagement Index > Recommend  %Favorable} as string,",
-						"          {Role Clarity} as string,",
-						"          {Role Clarity  %Favorable} as string,",
-						"          Resources as string,",
-						"          {Resources  %Favorable} as string,",
-						"          {Engagement Index > eSat} as string,",
-						"          {Engagement Index > eSat  %Favorable} as string,",
-						"          Belonging as string,",
-						"          {Belonging  %Favorable} as string,",
-						"          Prospects as string,",
-						"          {Prospects  %Favorable} as string,",
-						"          {Purpose Contribution} as string,",
-						"          {Purpose Contribution  %Favorable} as string,",
-						"          {Inclusion - Team} as string,",
-						"          {Inclusion - Team  %Favorable} as string,",
-						"          {Job Feedback} as string,",
-						"          {Job Feedback  %Favorable} as string,",
-						"          {Consumer Focus - Culture} as string,",
-						"          {Consumer Focus - Culture  %Favorable} as string,",
-						"          {Non-Discrimination} as string,",
-						"          {Non-Discrimination  %Favorable} as string,",
-						"          {Code of Conduct} as string,",
-						"          {Code of Conduct  %Favorable} as string,",
-						"          {Health & Safety} as string,",
-						"          {Health & Safety  %Favorable} as string,",
-						"          {Continuous Improvement} as string,",
-						"          {Continuous Improvement  %Favorable} as string,",
-						"          Empowerment as string,",
-						"          {Empowerment  %Favorable} as string,",
-						"          Environment as string,",
-						"          {Environment  %Favorable} as string,",
-						"          Purpose as string,",
-						"          {Purpose  %Favorable} as string",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     ignoreNoFilesFound: false) ~> sourceExcelevs",
-						"source(output(",
-						"          {User First Name} as string,",
-						"          {User Last Name} as string,",
-						"          {User ID} as string,",
-						"          {Local system ID} as string,",
-						"          Type as string,",
-						"          Status as string,",
-						"          {Date changed} as string,",
-						"          {Date effective} as string,",
-						"          {Field modified} as string,",
-						"          {Field type} as string,",
-						"          {Field changed from} as string,",
-						"          {Field changed to} as string,",
-						"          {Field changed by} as string,",
-						"          {Reason for change} as string",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     ignoreNoFilesFound: false) ~> sourceexcelabs",
-						"source(output(",
-						"          ID as string,",
-						"          Respondents as string,",
-						"          ResponseRate as string,",
-						"          Culture as string,",
-						"          {Culture  %Favorable} as string,",
-						"          {Trust - Team} as string,",
-						"          {Trust - Team  %Favorable} as string,",
-						"          {Role Clarity Functional} as string,",
-						"          {Role Clarity Functional  %Favorable} as string,",
-						"          {Growth Functional} as string,",
-						"          {Growth Functional  %Favorable} as string,",
-						"          Career as string,",
-						"          {Career  %Favorable} as string,",
-						"          {Continuous Improvement Functional} as string,",
-						"          {Continuous Improvement Functional  %Favorable} as string,",
-						"          {Communication - Manager} as string,",
-						"          {Communication - Manager  %Favorable} as string,",
-						"          Support as string,",
-						"          {Support  %Favorable} as string,",
-						"          {Equal Opportunity} as string,",
-						"          {Equal Opportunity  %Favorable} as string,",
-						"          {Distress - Well-being} as string,",
-						"          {Distress - Well-being  %Favorable} as string,",
-						"          {Ethics Helpline} as string,",
-						"          {Ethics Helpline  %Favorable} as string,",
-						"          {Work Life Balance} as string,",
-						"          {Work Life Balance  %Favorable} as string,",
-						"          Growth as string,",
-						"          {Growth  %Favorable} as string,",
-						"          Cooperation as string,",
-						"          {Cooperation  %Favorable} as string,",
-						"          Initiative as string,",
-						"          {Initiative  %Favorable} as string,",
-						"          {Decision Making} as string,",
-						"          {Decision Making  %Favorable} as string,",
-						"          {Engagement Index} as string,",
-						"          {Engagement Index  %Favorable} as string,",
-						"          {Engagement Index > Recommend} as string,",
-						"          {Engagement Index > Recommend  %Favorable} as string,",
-						"          {Role Clarity} as string,",
-						"          {Role Clarity  %Favorable} as string,",
-						"          Resources as string,",
-						"          {Resources  %Favorable} as string,",
-						"          {Engagement Index > eSat} as string,",
-						"          {Engagement Index > eSat  %Favorable} as string,",
-						"          Belonging as string,",
-						"          {Belonging  %Favorable} as string,",
-						"          Prospects as string,",
-						"          {Prospects  %Favorable} as string,",
-						"          {Purpose Contribution} as string,",
-						"          {Purpose Contribution  %Favorable} as string,",
-						"          {Inclusion - Team} as string,",
-						"          {Inclusion - Team  %Favorable} as string,",
-						"          {Job Feedback} as string,",
-						"          {Job Feedback  %Favorable} as string,",
-						"          {Consumer Focus - Culture} as string,",
-						"          {Consumer Focus - Culture  %Favorable} as string,",
-						"          {Non-Discrimination} as string,",
-						"          {Non-Discrimination  %Favorable} as string,",
-						"          {Code of Conduct} as string,",
-						"          {Code of Conduct  %Favorable} as string,",
-						"          {Health & Safety} as string,",
-						"          {Health & Safety  %Favorable} as string,",
-						"          {Continuous Improvement} as string,",
-						"          {Continuous Improvement  %Favorable} as string,",
-						"          Empowerment as string,",
-						"          {Empowerment  %Favorable} as string,",
-						"          Environment as string,",
-						"          {Environment  %Favorable} as string,",
-						"          Purpose as string,",
-						"          {Purpose  %Favorable} as string",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     ignoreNoFilesFound: false) ~> sourceexcelipe",
-						"source(output(",
-						"          ID as string,",
-						"          Respondents as string,",
-						"          ResponseRate as string,",
-						"          Culture as string,",
-						"          {Culture  %Favorable} as string,",
-						"          {Trust - Team} as string,",
-						"          {Trust - Team  %Favorable} as string,",
-						"          {Role Clarity Functional} as string,",
-						"          {Role Clarity Functional  %Favorable} as string,",
-						"          {Growth Functional} as string,",
-						"          {Growth Functional  %Favorable} as string,",
-						"          Career as string,",
-						"          {Career  %Favorable} as string,",
-						"          {Continuous Improvement Functional} as string,",
-						"          {Continuous Improvement Functional  %Favorable} as string,",
-						"          {Communication - Manager} as string,",
-						"          {Communication - Manager  %Favorable} as string,",
-						"          Support as string,",
-						"          {Support  %Favorable} as string,",
-						"          {Equal Opportunity} as string,",
-						"          {Equal Opportunity  %Favorable} as string,",
-						"          {Distress - Well-being} as string,",
-						"          {Distress - Well-being  %Favorable} as string,",
-						"          {Ethics Helpline} as string,",
-						"          {Ethics Helpline  %Favorable} as string,",
-						"          {Work Life Balance} as string,",
-						"          {Work Life Balance  %Favorable} as string,",
-						"          Growth as string,",
-						"          {Growth  %Favorable} as string,",
-						"          Cooperation as string,",
-						"          {Cooperation  %Favorable} as string,",
-						"          Initiative as string,",
-						"          {Initiative  %Favorable} as string,",
-						"          {Decision Making} as string,",
-						"          {Decision Making  %Favorable} as string,",
-						"          {Engagement Index} as string,",
-						"          {Engagement Index  %Favorable} as string,",
-						"          {Engagement Index > Recommend} as string,",
-						"          {Engagement Index > Recommend  %Favorable} as string,",
-						"          {Role Clarity} as string,",
-						"          {Role Clarity  %Favorable} as string,",
-						"          Resources as string,",
-						"          {Resources  %Favorable} as string,",
-						"          {Engagement Index > eSat} as string,",
-						"          {Engagement Index > eSat  %Favorable} as string,",
-						"          Belonging as string,",
-						"          {Belonging  %Favorable} as string,",
-						"          Prospects as string,",
-						"          {Prospects  %Favorable} as string,",
-						"          {Purpose Contribution} as string,",
-						"          {Purpose Contribution  %Favorable} as string,",
-						"          {Inclusion - Team} as string,",
-						"          {Inclusion - Team  %Favorable} as string,",
-						"          {Job Feedback} as string,",
-						"          {Job Feedback  %Favorable} as string,",
-						"          {Consumer Focus - Culture} as string,",
-						"          {Consumer Focus - Culture  %Favorable} as string,",
-						"          {Non-Discrimination} as string,",
-						"          {Non-Discrimination  %Favorable} as string,",
-						"          {Code of Conduct} as string,",
-						"          {Code of Conduct  %Favorable} as string,",
-						"          {Health & Safety} as string,",
-						"          {Health & Safety  %Favorable} as string,",
-						"          {Continuous Improvement} as string,",
-						"          {Continuous Improvement  %Favorable} as string,",
-						"          Empowerment as string,",
-						"          {Empowerment  %Favorable} as string,",
-						"          Environment as string,",
-						"          {Environment  %Favorable} as string,",
-						"          Purpose as string,",
-						"          {Purpose  %Favorable} as string",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     ignoreNoFilesFound: false) ~> sourceexcelleaves",
-						"source(output(",
-						"          count_devplan_id as integer,",
-						"          assigned_user_id as integer,",
-						"          year as integer",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     query: 'SELECT count( distinct [devplan_id]) count_devplan_id,\\n      [assigned_user_id],year(devplan_created_dt) year\\n      FROM [dataexporter].[devplan_core] group by\\n  year(devplan_created_dt),[assigned_user_id]',",
-						"     format: 'query') ~> sourcesqldevplancore",
-						"source(output(",
-						"          count_transc_obj_id as integer,",
-						"          year as integer,",
-						"          trans_user_id as integer",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     query: 'SELECT count(distinct transc_object_id) count_transc_obj_id\\n      ,year([user_lo_create_dt]) year    \\n      ,[transc_user_id] trans_user_id     \\n  FROM [reporting].[vw_rpt_transcript] where year([user_lo_create_dt])>2018 \\n  group by year([user_lo_create_dt])    \\n      ,[transc_user_id] \\n',",
-						"     format: 'query') ~> sourcesqlrpttranscript",
-						"source(output(",
-						"          user_cf_user_id as integer,",
-						"          current_abs_compa_ratio as double,",
-						"          current_ttc_compa_ratio as double",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     query: 'SELECT [user_cf_user_id]     \\n      ,[current_abs_compa_ratio]     \\n      ,[current_ttc_compa_ratio]     \\n  FROM [reporting].[vw_rpt_user_cf] where current_abs_compa_ratio is not null',",
-						"     format: 'query') ~> sourcesqlrptusercf",
-						"source(output(",
-						"          RespondersEmail as string,",
-						"          QuestionTitle as string,",
-						"          Answer as string",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     query: 'SELECT \\n      [RespondersEmail]      \\n      ,[QuestionTitle]     \\n      ,[Answer]\\n  FROM [dbo].[SurveyResponse] where CreatedBy like \\'%ee4%\\' and QuestionID=\\'4\\'',",
-						"     format: 'query') ~> sourcesqlsurveyresponse",
-						"source(output(",
-						"          Id as long,",
-						"          user_id as string,",
-						"          division as string,",
-						"          job_family as string,",
-						"          functional_area as string,",
-						"          reason_for_leaving as string,",
-						"          termination_type as string,",
-						"          termination_date as timestamp,",
-						"          original_hire_date as timestamp,",
-						"          electrolux_legal_entity as string,",
-						"          organizational_area as string,",
-						"          region as string,",
-						"          tier_level as integer,",
-						"          job_level_sub_band as string,",
-						"          job_level_band as string,",
-						"          employee_nationality as string,",
-						"          is_line_manager as string,",
-						"          country_of_location as string,",
-						"          employee_type as string,",
-						"          date_of_birth as timestamp,",
-						"          employee_gender as string,",
-						"          job_family_id as integer,",
-						"          job_family_ref as string,",
-						"          manager_id as integer",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     query: '\\nSELECT [Id]\\n      ,[user_id]\\n      ,[division]\\n      ,[job_family]\\n      ,[functional_area]\\n      ,[reason_for_leaving]\\n      ,[termination_type]\\n      ,[termination_date]\\n      ,[original_hire_date]\\n      ,[electrolux_legal_entity]\\n      ,[organizational_area]\\n      ,[region]\\n      ,[tier_level]\\n      ,[job_level_sub_band]\\n      ,[job_level_band]\\n      ,[employee_nationality]\\n      ,[is_line_manager]\\n      ,[country_of_location]\\n      ,[employee_type]\\n      ,[date_of_birth]\\n      ,[employee_gender]\\n      ,[job_family_id]\\n      ,[job_family_ref]\\n      ,[manager_id]\\n  FROM [datatransformation].[HistoricalSnapshot]\\n',",
-						"     format: 'query') ~> sourcesqlhistoricalsnapshot",
-						"source(output(",
-						"          user_id as integer,",
-						"          year as string,",
-						"          task_user_override as decimal(18,2)",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     query: 'SELECT [user_id]\\n      ,right([task_name],4) year\\n      ,[task_user_override]\\n        FROM [reporting].[vw_rpt_performance_review]',",
-						"     format: 'query') ~> sourcedbrptperformancereview",
-						"source(output(",
-						"          user_id as integer,",
-						"          task_id as integer,",
-						"          rating as string",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     query: 'SELECT [warehouse_smp_custom_fields_user_id] user_id\\n      ,[warehouse_smp_custom_fields_task_id] task_id\\n      ,RIGHT([smp_custom_field_02133],4) rating\\n  FROM [reporting].[vw_rpt_succession_incumbent_smp_cf]',",
-						"     format: 'query') ~> sourcesqlsuccessionincumbent",
-						"sourceExcelevs sink(allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     umask: 0022,",
-						"     preCommands: [],",
-						"     postCommands: [],",
-						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> sink1"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_evs')]",
-				"[concat(variables('factoryId'), '/datasets/ds_abs')]",
-				"[concat(variables('factoryId'), '/datasets/ds_ipe')]",
-				"[concat(variables('factoryId'), '/datasets/ds_leaves')]",
 				"[concat(variables('factoryId'), '/datasets/ds_azure_table')]",
 				"[concat(variables('factoryId'), '/datasets/ds_csv_file')]"
 			]
