@@ -123,6 +123,9 @@
 				},
 				{
 					"name": "joinjoinmain3ipe"
+				},
+				{
+					"name": "joinmain4leaves"
 				}
 			],
 			"scriptLines": [
@@ -394,7 +397,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> joinmainevs",
-				"joinmainevs, sourceexcelabs join(user_id == sourceexcelabs@{User ID},",
+				"joinmainevs, aggregateabs join(user_id == aggregateabs@{User ID},",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
@@ -404,6 +407,11 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> joinjoinmain3ipe",
+				"joinjoinmain3ipe, sourceexcelleaves join(user_id == sourceexcelleaves@{User ID},",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinmain4leaves",
 				"sourceExcelevs sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
