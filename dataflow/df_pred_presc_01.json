@@ -132,6 +132,9 @@
 				},
 				{
 					"name": "joinmain6rpttranscript"
+				},
+				{
+					"name": "joinmain7rptusercf"
 				}
 			],
 			"scriptLines": [
@@ -428,6 +431,11 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> joinmain6rpttranscript",
+				"joinmain6rpttranscript, sourcesqlrptusercf join({User ID Technical} == user_cf_user_id,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinmain7rptusercf",
 				"sourceExcelevs sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
