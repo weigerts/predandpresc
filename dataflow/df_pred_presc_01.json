@@ -117,6 +117,9 @@
 				},
 				{
 					"name": "joinmainevs"
+				},
+				{
+					"name": "joinmain2abs"
 				}
 			],
 			"scriptLines": [
@@ -388,6 +391,11 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> joinmainevs",
+				"joinmainevs, sourceexcelabs join(user_id == sourceexcelabs@{User ID},",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinmain2abs",
 				"sourceExcelevs sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
