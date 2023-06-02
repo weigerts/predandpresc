@@ -92,7 +92,7 @@
 						"referenceName": "ds_azure_table",
 						"type": "DatasetReference"
 					},
-					"name": "sourcesqlrptuser",
+					"name": "sourcesqlviewccuser",
 					"description": "[reporting].[vw_users_cc]"
 				}
 			],
@@ -110,19 +110,10 @@
 					"name": "aggregateipe"
 				},
 				{
-					"name": "joinevsrptuser"
-				},
-				{
 					"name": "aggregateabs"
 				},
 				{
-					"name": "joinevsrptuserabs"
-				},
-				{
-					"name": "joinevsrptuserabsipe"
-				},
-				{
-					"name": "joinevsrptuserabsipeleaves"
+					"name": "joinmain"
 				}
 			],
 			"scriptLines": [
@@ -379,32 +370,17 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     query: 'select * from reporting.vw_users_cc',",
-				"     format: 'query') ~> sourcesqlrptuser",
+				"     format: 'query') ~> sourcesqlviewccuser",
 				"sourceexcelipe aggregate(groupBy({User ID}),",
 				"     {Date position changed} = max({Date effective})) ~> aggregateipe",
-				"sourceExcelevs, sourcesqlrptuser join(ID == {Manager Ref},",
-				"     joinType:'inner',",
-				"     matchType:'exact',",
-				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> joinevsrptuser",
 				"sourceexcelabs aggregate(groupBy({User ID}),",
 				"     {Max Effective Date} = max({Date effective})) ~> aggregateabs",
-				"joinevsrptuser, aggregateabs join(sourcesqlrptuser@{User Id} == aggregateabs@{User ID},",
+				"sourcesqlhistoricalsnapshot, sourcesqlviewccuser join(user_id == {User Id},",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> joinevsrptuserabs",
-				"joinevsrptuserabs, aggregateipe join(sourcesqlrptuser@{User Id} == aggregateipe@{User ID},",
-				"     joinType:'inner',",
-				"     matchType:'exact',",
-				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> joinevsrptuserabsipe",
-				"joinevsrptuserabsipe, sourceexcelleaves join(sourcesqlrptuser@{User Id} == sourceexcelleaves@{User ID},",
-				"     joinType:'inner',",
-				"     matchType:'exact',",
-				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> joinevsrptuserabsipeleaves",
-				"joinevsrptuserabsipeleaves sink(allowSchemaDrift: true,",
+				"     broadcast: 'auto')~> joinmain",
+				"sourceExcelevs sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
 				"     preCommands: [],",
