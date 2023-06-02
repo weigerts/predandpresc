@@ -120,6 +120,9 @@
 				},
 				{
 					"name": "joinmain2abs"
+				},
+				{
+					"name": "joinjoinmain3ipe"
 				}
 			],
 			"scriptLines": [
@@ -396,6 +399,11 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> joinmain2abs",
+				"joinmain2abs, aggregateipe join(user_id == aggregateipe@{User ID},",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinjoinmain3ipe",
 				"sourceExcelevs sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
