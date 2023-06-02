@@ -135,6 +135,9 @@
 				},
 				{
 					"name": "joinmain7rptusercf"
+				},
+				{
+					"name": "joinmain8surveyresponse"
 				}
 			],
 			"scriptLines": [
@@ -436,6 +439,11 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> joinmain7rptusercf",
+				"joinmain7rptusercf, sourcesqlsurveyresponse join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinmain8surveyresponse",
 				"sourceExcelevs sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
