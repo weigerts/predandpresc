@@ -126,6 +126,12 @@
 				},
 				{
 					"name": "joinmain4leaves"
+				},
+				{
+					"name": "joinmain5devplancore"
+				},
+				{
+					"name": "joinmain6rpttranscript"
 				}
 			],
 			"scriptLines": [
@@ -412,6 +418,16 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> joinmain4leaves",
+				"joinmain4leaves, sourcesqldevplancore join({User ID Technical} == assigned_user_id,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinmain5devplancore",
+				"joinmain5devplancore, sourcesqlrpttranscript join({User ID Technical} == trans_user_id,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinmain6rpttranscript",
 				"sourceExcelevs sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
