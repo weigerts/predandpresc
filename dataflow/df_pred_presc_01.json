@@ -99,7 +99,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "ds_csv_file",
+						"referenceName": "ds_sink",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -445,8 +445,9 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> joinmain8surveyresponse",
-				"sourceExcelevs sink(allowSchemaDrift: true,",
+				"joinmain8surveyresponse sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     format: 'parquet',",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
