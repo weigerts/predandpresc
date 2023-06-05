@@ -1889,7 +1889,8 @@
 						"          user_name4 = {User Name4},",
 						"          user_name5 = {User Name5},",
 						"          user_name6 = {User Name6},",
-						"          user_name7 = {User Name7}",
+						"          user_name7 = {User Name7},",
+						"          date_of_generation = {Data of Generation}",
 						"     ),",
 						"     partitionBy('hash', 1)) ~> sinktocsv"
 					]
