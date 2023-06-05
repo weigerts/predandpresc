@@ -1848,7 +1848,7 @@
 						"joinusersdivision derive({Data of Generation} = toString(currentDate())) ~> derivedColumn1",
 						"selectneededfields sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
-						"     partitionFileNames:[(concat('emp_headcount_sga_',toString(year(currentDate())),toString(month(currentDate())),'.csv')\r",
+						"     partitionFileNames:[(concat('emp_headcount_sga_',currentUTC(),'.csv')\r",
 						"\r",
 						")],",
 						"     umask: 0022,",
