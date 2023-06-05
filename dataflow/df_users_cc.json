@@ -161,7 +161,7 @@
 				"          {User Name5},",
 				"          {User Name6},",
 				"          {User Name7},",
-				"          {Data of Generation}",
+				"          as_of_date = {Data of Generation}",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectneededfields",
@@ -211,7 +211,7 @@
 				"          user_name5 = {User Name5},",
 				"          user_name6 = {User Name6},",
 				"          user_name7 = {User Name7},",
-				"          date_of_generation = {Data of Generation}",
+				"          date_of_generation = as_of_date",
 				"     ),",
 				"     partitionBy('hash', 1)) ~> sinktocsv"
 			]
