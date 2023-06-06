@@ -12,7 +12,9 @@
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation"
+				"type": "AzureBlobFSLocation",
+				"folderPath": "bronze",
+				"fileSystem": "data"
 			},
 			"compressionCodec": "snappy"
 		},
