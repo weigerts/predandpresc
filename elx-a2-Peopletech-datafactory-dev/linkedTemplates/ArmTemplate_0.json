@@ -19,6 +19,10 @@
 		"ls_data_lake_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "@{linkedService().url}"
+		},
+		"ls_elxa2ns002prd_properties_typeProperties_sasUri_secretName": {
+			"type": "string",
+			"defaultValue": "saelxa2ns0002prd-connection"
 		}
 	},
 	"variables": {
@@ -105,6 +109,31 @@
 							}
 						},
 						"secretName": "storage-account-key"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_key_vault')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_elxa2ns002prd')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"sasUri": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "ls_key_vault",
+							"type": "LinkedServiceReference",
+							"parameters": {
+								"kv_url": "https://elx-a2-ppltech-kv-dev.vault.azure.net/"
+							}
+						},
+						"secretName": "[parameters('ls_elxa2ns002prd_properties_typeProperties_sasUri_secretName')]"
 					}
 				}
 			},
@@ -274,6 +303,33 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ls_data_lake')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_elxa2ns0002prd_dev')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_elxa2ns002prd",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "sga-devtst"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_elxa2ns002prd')]"
 			]
 		},
 		{
@@ -1877,7 +1933,7 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_csv_file",
+								"referenceName": "ds_elxa2ns0002prd_dev",
 								"type": "DatasetReference"
 							},
 							"name": "sinktocsv"
@@ -2035,9 +2091,6 @@
 						"     partitionFileNames:[(concat('emp_headcount_sga_',substring(toString(currentUTC()),1,4),substring(toString(currentUTC()),6,2),'.csv')\r",
 						"\r",
 						")],",
-						"     umask: 0022,",
-						"     preCommands: [],",
-						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
 						"     mapColumn(",
@@ -2085,13 +2138,15 @@
 						"          division_name12,",
 						"          date_of_generation",
 						"     ),",
-						"     partitionBy('hash', 1)) ~> sinktocsv"
+						"     partitionBy('hash', 1),",
+						"     preCommands: [],",
+						"     postCommands: []) ~> sinktocsv"
 					]
 				}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_azure_table')]",
-				"[concat(variables('factoryId'), '/datasets/ds_csv_file')]"
+				"[concat(variables('factoryId'), '/datasets/ds_elxa2ns0002prd_dev')]"
 			]
 		},
 		{

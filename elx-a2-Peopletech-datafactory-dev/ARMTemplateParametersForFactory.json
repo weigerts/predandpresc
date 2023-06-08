@@ -11,6 +11,9 @@
 		"ls_data_lake_properties_typeProperties_url": {
 			"value": "@{linkedService().url}"
 		},
+		"ls_elxa2ns002prd_properties_typeProperties_sasUri_secretName": {
+			"value": "saelxa2ns0002prd-connection"
+		},
 		"ls_key_vault_properties_typeProperties_baseUrl": {
 			"value": "@{linkedService().kv_url}"
 		}

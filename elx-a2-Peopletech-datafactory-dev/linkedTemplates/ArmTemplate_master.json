@@ -16,6 +16,10 @@
 			"type": "string",
 			"defaultValue": "@{linkedService().url}"
 		},
+		"ls_elxa2ns002prd_properties_typeProperties_sasUri_secretName": {
+			"type": "string",
+			"defaultValue": "saelxa2ns0002prd-connection"
+		},
 		"ls_key_vault_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "@{linkedService().kv_url}"
@@ -55,6 +59,9 @@
 					},
 					"ls_data_lake_properties_typeProperties_url": {
 						"value": "[parameters('ls_data_lake_properties_typeProperties_url')]"
+					},
+					"ls_elxa2ns002prd_properties_typeProperties_sasUri_secretName": {
+						"value": "[parameters('ls_elxa2ns002prd_properties_typeProperties_sasUri_secretName')]"
 					}
 				}
 			},
