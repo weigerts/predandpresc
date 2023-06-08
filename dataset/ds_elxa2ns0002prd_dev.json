@@ -1,0 +1,22 @@
+{
+	"name": "ds_elxa2ns0002prd_dev",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_elxa2ns002prd",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "sga-devtst"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
