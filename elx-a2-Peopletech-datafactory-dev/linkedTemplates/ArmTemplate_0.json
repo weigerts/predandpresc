@@ -1933,7 +1933,7 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_csv_file",
+								"referenceName": "ds_elxa2ns0002prd_dev",
 								"type": "DatasetReference"
 							},
 							"name": "sinktocsv"
@@ -2091,9 +2091,6 @@
 						"     partitionFileNames:[(concat('emp_headcount_sga_',substring(toString(currentUTC()),1,4),substring(toString(currentUTC()),6,2),'.csv')\r",
 						"\r",
 						")],",
-						"     umask: 0022,",
-						"     preCommands: [],",
-						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
 						"     mapColumn(",
@@ -2141,13 +2138,15 @@
 						"          division_name12,",
 						"          date_of_generation",
 						"     ),",
-						"     partitionBy('hash', 1)) ~> sinktocsv"
+						"     partitionBy('hash', 1),",
+						"     preCommands: [],",
+						"     postCommands: []) ~> sinktocsv"
 					]
 				}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_azure_table')]",
-				"[concat(variables('factoryId'), '/datasets/ds_csv_file')]"
+				"[concat(variables('factoryId'), '/datasets/ds_elxa2ns0002prd_dev')]"
 			]
 		},
 		{
@@ -2236,7 +2235,8 @@
 									"vwuserhierarchy": {},
 									"vwdivisionhierarchy": {},
 									"sinktocsv": {}
-								}
+								},
+								"linkedServiceParameters": {}
 							},
 							"staging": {},
 							"compute": {
