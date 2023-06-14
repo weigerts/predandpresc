@@ -5,8 +5,8 @@
 			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"db_server_name": "elx-a2-hrhub-sql-dev.database.windows.net",
-				"db_name": "elx-a2-hrhub-sqldb-dev",
+				"db_server_name": "elx-a2-hrhub-sql-test.database.windows.net",
+				"db_name": "elx-a2-hrhub-sqldb-test",
 				"db_user": "dhradmin"
 			}
 		},
