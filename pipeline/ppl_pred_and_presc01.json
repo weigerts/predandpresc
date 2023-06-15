@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "df_pred_presc_01",
+						"referenceName": "df_presc_presc_splitted",
 						"type": "DataFlowReference"
 					},
 					"compute": {
