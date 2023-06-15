@@ -115,8 +115,7 @@
 									"vwuserhierarchy": {},
 									"vwdivisionhierarchy": {},
 									"sinktocsv": {}
-								},
-								"linkedServiceParameters": {}
+								}
 							},
 							"staging": {},
 							"compute": {
@@ -234,8 +233,8 @@
 					"referenceName": "AzureSqlDatabase1",
 					"type": "LinkedServiceReference",
 					"parameters": {
-						"db_server_name": "elx-a2-hrhub-sql-dev.database.windows.net",
-						"db_name": "elx-a2-hrhub-sqldb-dev",
+						"db_server_name": "elx-a2-hrhub-sql-prod.database.windows.net",
+						"db_name": "elx-a2-hrhub-sqldb-prod",
 						"db_user": "dhradmin"
 					}
 				},
@@ -1134,10 +1133,10 @@
 							"referenceName": "ls_key_vault",
 							"type": "LinkedServiceReference",
 							"parameters": {
-								"kv_url": "https://elx-a2-ppltech-kv-dev.vault.azure.net/"
+								"kv_url": "https://elx-a2-hrhub-kv-prod.vault.azure.net/"
 							}
 						},
-						"secretName": "sql-db-password"
+						"secretName": "DatabaseSQLPassword"
 					}
 				}
 			},
@@ -1632,7 +1631,7 @@
 						"     matchType:'exact',",
 						"     ignoreSpaces: false,",
 						"     broadcast: 'auto')~> joinmain",
-						"joinmain, sourceExcelevs join({Manager Ref} == sourceExcelevs@ID,",
+						"joinmain, sourceExcelevs join({Manager Ref} == upper(sourceExcelevs@ID),",
 						"     joinType:'inner',",
 						"     matchType:'exact',",
 						"     ignoreSpaces: false,",
@@ -2256,6 +2255,319 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ls_key_vault')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_delta_evs')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_data_lake",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"url": "https://elxa2peopletechdev01.dfs.core.windows.net/"
+					}
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "bronze/esv",
+						"fileSystem": "data"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "id",
+						"type": "UTF8"
+					},
+					{
+						"name": "respondents",
+						"type": "INT32"
+					},
+					{
+						"name": "responserate",
+						"type": "INT32"
+					},
+					{
+						"name": "culture",
+						"type": "INT32"
+					},
+					{
+						"name": "culture_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "trust_team",
+						"type": "INT32"
+					},
+					{
+						"name": "trust_team_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "role_clarity_functional",
+						"type": "UTF8"
+					},
+					{
+						"name": "role_clarity_functional_per_favorable",
+						"type": "UTF8"
+					},
+					{
+						"name": "growth_functional",
+						"type": "UTF8"
+					},
+					{
+						"name": "growth_functional_per_favorable",
+						"type": "UTF8"
+					},
+					{
+						"name": "career",
+						"type": "INT32"
+					},
+					{
+						"name": "career_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "continuous_improvement_functional",
+						"type": "UTF8"
+					},
+					{
+						"name": "continuous_improvement_functional_per_favorable",
+						"type": "UTF8"
+					},
+					{
+						"name": "communication_manager",
+						"type": "INT32"
+					},
+					{
+						"name": "communication_manager_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "support",
+						"type": "INT32"
+					},
+					{
+						"name": "support_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "equal_opportunity",
+						"type": "INT32"
+					},
+					{
+						"name": "equal_opportunity_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "distress_well-being",
+						"type": "INT32"
+					},
+					{
+						"name": "distress_well-being_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "ethics_helpline",
+						"type": "INT32"
+					},
+					{
+						"name": "ethics_helpline_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "work_life_balance",
+						"type": "INT32"
+					},
+					{
+						"name": "work_life_balance_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "growth",
+						"type": "INT32"
+					},
+					{
+						"name": "growth_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "cooperation",
+						"type": "INT32"
+					},
+					{
+						"name": "cooperation_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "initiative",
+						"type": "INT32"
+					},
+					{
+						"name": "initiative_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "decision_making",
+						"type": "INT32"
+					},
+					{
+						"name": "decision_making_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "engagement_index",
+						"type": "INT32"
+					},
+					{
+						"name": "engagement_index_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "engagement_index_>_recommend",
+						"type": "INT32"
+					},
+					{
+						"name": "engagement_index_>_recommend_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "role_clarity",
+						"type": "INT32"
+					},
+					{
+						"name": "role_clarity_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "resources",
+						"type": "INT32"
+					},
+					{
+						"name": "resources_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "engagement_index_>_esat",
+						"type": "INT32"
+					},
+					{
+						"name": "engagement_index_>_esat_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "belonging",
+						"type": "INT32"
+					},
+					{
+						"name": "belonging_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "prospects",
+						"type": "INT32"
+					},
+					{
+						"name": "prospects_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "purpose_contribution",
+						"type": "INT32"
+					},
+					{
+						"name": "purpose_contribution_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "inclusion_team",
+						"type": "INT32"
+					},
+					{
+						"name": "inclusion_team_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "job_feedback",
+						"type": "INT32"
+					},
+					{
+						"name": "job_feedback_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "consumer_focus_culture",
+						"type": "INT32"
+					},
+					{
+						"name": "consumer_focus_culture_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "non-discrimination",
+						"type": "INT32"
+					},
+					{
+						"name": "non-discrimination_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "code_of_conduct",
+						"type": "INT32"
+					},
+					{
+						"name": "code_of_conduct_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "health_&_safety",
+						"type": "INT32"
+					},
+					{
+						"name": "health_&_safety_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "continuous_improvement",
+						"type": "INT32"
+					},
+					{
+						"name": "continuous_improvement_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "empowerment",
+						"type": "INT32"
+					},
+					{
+						"name": "empowerment_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "environment",
+						"type": "INT32"
+					},
+					{
+						"name": "environment_per_favorable",
+						"type": "INT32"
+					},
+					{
+						"name": "purpose",
+						"type": "INT32"
+					},
+					{
+						"name": "purpose_per_favorable",
+						"type": "INT32"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_data_lake')]"
 			]
 		}
 	]
