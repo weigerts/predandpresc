@@ -1454,13 +1454,15 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "ls_data_lake",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {}
 				},
 				"annotations": [],
 				"type": "Parquet",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": "predpresc",
 						"folderPath": "bronze",
 						"fileSystem": "data"
 					},
