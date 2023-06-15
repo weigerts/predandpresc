@@ -22,10 +22,10 @@
 					"referenceName": "ls_key_vault",
 					"type": "LinkedServiceReference",
 					"parameters": {
-						"kv_url": "https://elx-a2-ppltech-kv-dev.vault.azure.net/"
+						"kv_url": "https://elx-a2-hrhub-kv-prod.vault.azure.net/"
 					}
 				},
-				"secretName": "sql-db-password-test"
+				"secretName": "DatabaseSQLPassword"
 			}
 		}
 	},
