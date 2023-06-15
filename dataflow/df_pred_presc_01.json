@@ -408,7 +408,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> joinmain",
-				"joinmain, sourceExcelevs join({Manager Ref} == sourceExcelevs@id,",
+				"joinmain, sourceExcelevs join({Manager Ref} == upper(sourceExcelevs@ID),",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
