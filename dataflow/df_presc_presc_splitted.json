@@ -262,7 +262,6 @@
 				"          purpose_per_favorable as integer",
 				"     ),",
 				"     format: 'parquet',",
-				"     partitionFileNames:['predpresc.parquet'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
