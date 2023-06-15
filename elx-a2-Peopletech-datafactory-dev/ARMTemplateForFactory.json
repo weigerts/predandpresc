@@ -49,23 +49,13 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataflow": {
-								"referenceName": "df_pred_presc_01",
+								"referenceName": "df_presc_presc_splitted",
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
-									"sourceExcelevs": {},
-									"sourceexcelabs": {},
-									"sourceexcelipe": {},
-									"sourceexcelleaves": {},
-									"sourcesqldevplancore": {},
-									"sourcesqlrpttranscript": {},
-									"sourcesqlrptusercf": {},
-									"sourcesqlsurveyresponse": {},
 									"sourcesqlhistoricalsnapshot": {},
-									"sourcedbrptperformancereview": {},
-									"sourcesqlsuccessionincumbent": {},
 									"sourcesqlviewccuser": {},
-									"sink1": {}
+									"sinktodatalake": {}
 								}
 							},
 							"staging": {},
@@ -84,7 +74,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/dataflows/df_pred_presc_01')]"
+				"[concat(variables('factoryId'), '/dataflows/df_presc_presc_splitted')]"
 			]
 		},
 		{
