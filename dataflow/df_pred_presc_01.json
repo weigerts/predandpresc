@@ -601,7 +601,7 @@
 				"joinmain8surveyresponse sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
-				"     partitionFileNames:['predandpresc'],",
+				"     partitionFileNames:[''],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
@@ -746,7 +746,8 @@
 				"          RespondersEmail,",
 				"          QuestionTitle,",
 				"          Answer",
-				"     )) ~> sink1"
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
 			]
 		}
 	}
