@@ -1455,7 +1455,9 @@
 				"linkedServiceName": {
 					"referenceName": "ls_data_lake",
 					"type": "LinkedServiceReference",
-					"parameters": {}
+					"parameters": {
+						"url": "https://elxa2peopletechdev01.dfs.core.windows.net/"
+					}
 				},
 				"annotations": [],
 				"type": "Parquet",
