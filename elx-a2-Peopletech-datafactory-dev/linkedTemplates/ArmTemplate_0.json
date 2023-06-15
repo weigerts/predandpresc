@@ -1464,8 +1464,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "predpresc",
-						"folderPath": "bronze",
+						"folderPath": "bronze/predpresc",
 						"fileSystem": "data"
 					},
 					"compressionCodec": "snappy"
