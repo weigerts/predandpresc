@@ -26,7 +26,7 @@
 						"referenceName": "ds_delta_evs",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "sinktodatalake"
 				}
 			],
 			"transformations": [
@@ -237,7 +237,7 @@
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> sinktodatalake"
 			]
 		}
 	}
