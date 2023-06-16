@@ -32,11 +32,17 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataflow": {
-								"referenceName": "df_presc_presc_splitted",
+								"referenceName": "df_pred_presc_01_sql",
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
+									"sourcesqldevplancore": {},
+									"sourcesqlrpttranscript": {},
+									"sourcesqlrptusercf": {},
+									"sourcesqlsurveyresponse": {},
 									"sourcesqlhistoricalsnapshot": {},
+									"sourcedbrptperformancereview": {},
+									"sourcesqlsuccessionincumbent": {},
 									"sourcesqlviewccuser": {},
 									"sinktodatalake": {}
 								}
