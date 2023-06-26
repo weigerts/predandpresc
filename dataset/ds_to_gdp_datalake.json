@@ -1,0 +1,196 @@
+{
+	"name": "ds_to_gdp_datalake",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_elxa2ns002prd",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "talentone",
+				"container": "sga-devtst"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "user_Id",
+				"type": "String"
+			},
+			{
+				"name": "sap_id",
+				"type": "String"
+			},
+			{
+				"name": "user_full_name",
+				"type": "String"
+			},
+			{
+				"name": "original_hire_date",
+				"type": "String"
+			},
+			{
+				"name": "job_title",
+				"type": "String"
+			},
+			{
+				"name": "manager_full_name",
+				"type": "String"
+			},
+			{
+				"name": "region",
+				"type": "String"
+			},
+			{
+				"name": "country_of_payroll",
+				"type": "String"
+			},
+			{
+				"name": "country_of_location",
+				"type": "String"
+			},
+			{
+				"name": "user_status",
+				"type": "String"
+			},
+			{
+				"name": "employment_status",
+				"type": "String"
+			},
+			{
+				"name": "termination_date",
+				"type": "String"
+			},
+			{
+				"name": "functional_area",
+				"type": "String"
+			},
+			{
+				"name": "full_time_part_time",
+				"type": "String"
+			},
+			{
+				"name": "work_time_capacity",
+				"type": "String"
+			},
+			{
+				"name": "cost_centre",
+				"type": "String"
+			},
+			{
+				"name": "electrolux_legal_entity",
+				"type": "String"
+			},
+			{
+				"name": "electrolux_legal_entity_ref",
+				"type": "String"
+			},
+			{
+				"name": "division",
+				"type": "String"
+			},
+			{
+				"name": "user_name1",
+				"type": "String"
+			},
+			{
+				"name": "user_name2",
+				"type": "String"
+			},
+			{
+				"name": "user_name3",
+				"type": "String"
+			},
+			{
+				"name": "user_name4",
+				"type": "String"
+			},
+			{
+				"name": "user_name5",
+				"type": "String"
+			},
+			{
+				"name": "user_name6",
+				"type": "String"
+			},
+			{
+				"name": "user_name7",
+				"type": "String"
+			},
+			{
+				"name": "user_name8",
+				"type": "String"
+			},
+			{
+				"name": "user_name9",
+				"type": "String"
+			},
+			{
+				"name": "user_name10",
+				"type": "String"
+			},
+			{
+				"name": "user_name11",
+				"type": "String"
+			},
+			{
+				"name": "division_name1",
+				"type": "String"
+			},
+			{
+				"name": "division_name2",
+				"type": "String"
+			},
+			{
+				"name": "division_name3",
+				"type": "String"
+			},
+			{
+				"name": "division_name4",
+				"type": "String"
+			},
+			{
+				"name": "division_name5",
+				"type": "String"
+			},
+			{
+				"name": "division_name6",
+				"type": "String"
+			},
+			{
+				"name": "division_name7",
+				"type": "String"
+			},
+			{
+				"name": "division_name8",
+				"type": "String"
+			},
+			{
+				"name": "division_name9",
+				"type": "String"
+			},
+			{
+				"name": "division_name10",
+				"type": "String"
+			},
+			{
+				"name": "division_name11",
+				"type": "String"
+			},
+			{
+				"name": "division_name12",
+				"type": "String"
+			},
+			{
+				"name": "date_of_generation",
+				"type": "String"
+			}
+		]
+	}
+}
