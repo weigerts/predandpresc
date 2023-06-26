@@ -3323,7 +3323,7 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_elxa2ns0002prd_dev",
+								"referenceName": "ds_to_gdp_datalake",
 								"type": "DatasetReference"
 							},
 							"name": "sinktocsv"
@@ -3478,6 +3478,51 @@
 						"joinusersdivision derive({Data of Generation} = toString(currentDate())) ~> derivedColumn1",
 						"selectneededfields sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
+						"     input(",
+						"          user_Id as string,",
+						"          sap_id as string,",
+						"          user_full_name as string,",
+						"          original_hire_date as string,",
+						"          job_title as string,",
+						"          manager_full_name as string,",
+						"          region as string,",
+						"          country_of_payroll as string,",
+						"          country_of_location as string,",
+						"          user_status as string,",
+						"          employment_status as string,",
+						"          termination_date as string,",
+						"          functional_area as string,",
+						"          full_time_part_time as string,",
+						"          work_time_capacity as string,",
+						"          cost_centre as string,",
+						"          electrolux_legal_entity as string,",
+						"          electrolux_legal_entity_ref as string,",
+						"          division as string,",
+						"          user_name1 as string,",
+						"          user_name2 as string,",
+						"          user_name3 as string,",
+						"          user_name4 as string,",
+						"          user_name5 as string,",
+						"          user_name6 as string,",
+						"          user_name7 as string,",
+						"          user_name8 as string,",
+						"          user_name9 as string,",
+						"          user_name10 as string,",
+						"          user_name11 as string,",
+						"          division_name1 as string,",
+						"          division_name2 as string,",
+						"          division_name3 as string,",
+						"          division_name4 as string,",
+						"          division_name5 as string,",
+						"          division_name6 as string,",
+						"          division_name7 as string,",
+						"          division_name8 as string,",
+						"          division_name9 as string,",
+						"          division_name10 as string,",
+						"          division_name11 as string,",
+						"          division_name12 as string,",
+						"          date_of_generation as string",
+						"     ),",
 						"     partitionFileNames:[(concat('emp_headcount_sga_',substring(toString(currentUTC()),1,4),substring(toString(currentUTC()),6,2),'.csv')\r",
 						"\r",
 						")],",
@@ -3536,7 +3581,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_azure_table')]",
-				"[concat(variables('factoryId'), '/datasets/ds_elxa2ns0002prd_dev')]"
+				"[concat(variables('factoryId'), '/datasets/ds_to_gdp_datalake')]"
 			]
 		},
 		{
@@ -3560,6 +3605,207 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ls_key_vault')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_to_gdp_datalake')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_elxa2ns002prd",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "talentone",
+						"container": "sga-devtst"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "user_Id",
+						"type": "String"
+					},
+					{
+						"name": "sap_id",
+						"type": "String"
+					},
+					{
+						"name": "user_full_name",
+						"type": "String"
+					},
+					{
+						"name": "original_hire_date",
+						"type": "String"
+					},
+					{
+						"name": "job_title",
+						"type": "String"
+					},
+					{
+						"name": "manager_full_name",
+						"type": "String"
+					},
+					{
+						"name": "region",
+						"type": "String"
+					},
+					{
+						"name": "country_of_payroll",
+						"type": "String"
+					},
+					{
+						"name": "country_of_location",
+						"type": "String"
+					},
+					{
+						"name": "user_status",
+						"type": "String"
+					},
+					{
+						"name": "employment_status",
+						"type": "String"
+					},
+					{
+						"name": "termination_date",
+						"type": "String"
+					},
+					{
+						"name": "functional_area",
+						"type": "String"
+					},
+					{
+						"name": "full_time_part_time",
+						"type": "String"
+					},
+					{
+						"name": "work_time_capacity",
+						"type": "String"
+					},
+					{
+						"name": "cost_centre",
+						"type": "String"
+					},
+					{
+						"name": "electrolux_legal_entity",
+						"type": "String"
+					},
+					{
+						"name": "electrolux_legal_entity_ref",
+						"type": "String"
+					},
+					{
+						"name": "division",
+						"type": "String"
+					},
+					{
+						"name": "user_name1",
+						"type": "String"
+					},
+					{
+						"name": "user_name2",
+						"type": "String"
+					},
+					{
+						"name": "user_name3",
+						"type": "String"
+					},
+					{
+						"name": "user_name4",
+						"type": "String"
+					},
+					{
+						"name": "user_name5",
+						"type": "String"
+					},
+					{
+						"name": "user_name6",
+						"type": "String"
+					},
+					{
+						"name": "user_name7",
+						"type": "String"
+					},
+					{
+						"name": "user_name8",
+						"type": "String"
+					},
+					{
+						"name": "user_name9",
+						"type": "String"
+					},
+					{
+						"name": "user_name10",
+						"type": "String"
+					},
+					{
+						"name": "user_name11",
+						"type": "String"
+					},
+					{
+						"name": "division_name1",
+						"type": "String"
+					},
+					{
+						"name": "division_name2",
+						"type": "String"
+					},
+					{
+						"name": "division_name3",
+						"type": "String"
+					},
+					{
+						"name": "division_name4",
+						"type": "String"
+					},
+					{
+						"name": "division_name5",
+						"type": "String"
+					},
+					{
+						"name": "division_name6",
+						"type": "String"
+					},
+					{
+						"name": "division_name7",
+						"type": "String"
+					},
+					{
+						"name": "division_name8",
+						"type": "String"
+					},
+					{
+						"name": "division_name9",
+						"type": "String"
+					},
+					{
+						"name": "division_name10",
+						"type": "String"
+					},
+					{
+						"name": "division_name11",
+						"type": "String"
+					},
+					{
+						"name": "division_name12",
+						"type": "String"
+					},
+					{
+						"name": "date_of_generation",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_elxa2ns002prd')]"
 			]
 		}
 	]
