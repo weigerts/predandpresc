@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "/talentone",
+				"folderPath": "talentone",
 				"container": "sga-devtst"
 			},
 			"columnDelimiter": ",",
