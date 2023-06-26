@@ -12,7 +12,7 @@
 			"value": "@{linkedService().url}"
 		},
 		"ls_elxa2ns002prd_properties_typeProperties_sasUri_secretName": {
-			"value": "saelxa2ns0002prd-connection"
+			"value": "saelxa2ns0002prd-uritoken01"
 		},
 		"ls_key_vault_properties_typeProperties_baseUrl": {
 			"value": "@{linkedService().kv_url}"

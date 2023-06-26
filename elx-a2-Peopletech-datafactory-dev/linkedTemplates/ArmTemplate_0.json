@@ -22,7 +22,7 @@
 		},
 		"ls_elxa2ns002prd_properties_typeProperties_sasUri_secretName": {
 			"type": "string",
-			"defaultValue": "saelxa2ns0002prd-connection"
+			"defaultValue": "saelxa2ns0002prd-uritoken01"
 		}
 	},
 	"variables": {
