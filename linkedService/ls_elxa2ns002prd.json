@@ -13,7 +13,7 @@
 						"kv_url": "https://elx-a2-ppltech-kv-dev.vault.azure.net/"
 					}
 				},
-				"secretName": "saelxa2ns0002prd-connection"
+				"secretName": "saelxa2ns0002prd-uritoken01"
 			}
 		}
 	}
